@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SessionProvider } from "next-auth/react";
 
 import "../public/scss/main.scss";
 import "photoswipe/dist/photoswipe.css";
@@ -154,6 +155,7 @@ export default function RootLayout({ children }) {
   }, []); // Only runs once on component mount
 
   return (
+    <SessionProvider>
     <html lang="en">
       <body className="preload-wrapper">
         <div className="preload preload-container" id="preloader">
@@ -187,5 +189,6 @@ export default function RootLayout({ children }) {
         <ScrollTop />
       </body>
     </html>
+    </SessionProvider>
   );
 }

@@ -1,9 +1,9 @@
 export const slides = [
   {
     imgSrc: "/images/slider/fashion-slideshow-01.jpg",
-    title: "Glamorous\nGlam",
-    text: "From casual to formal, we've got you covered",
-    btnText: "Shop collection",
+    title: "Lorem ipsum",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    btnText: "Shop Now",
   },
   {
     imgSrc: "/images/slider/fashion-slideshow-02.jpg",
