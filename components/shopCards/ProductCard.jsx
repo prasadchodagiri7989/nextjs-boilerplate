@@ -4,8 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContextElement } from "@/context/Context";
 import CountdownComponent from "../common/Countdown";
+
 export const ProductCard = ({ product }) => {
-  const [currentImage, setCurrentImage] = useState(product.imgSrc);
+  // Extracting data from the backend response
+  const productId = product._id; 
+  const productName = product.name; 
+  const productImage = product.images && product.images.length > 0 ? product.images[0] : "/placeholder.jpg"; // Default image if not available
+  const productPrice = product.price || 0; 
+  const productCategory = product.category || "Unknown"; 
+
+  const [currentImage, setCurrentImage] = useState(productImage);
   const { setQuickViewItem } = useContextElement();
   const {
     setQuickAddItem,
@@ -14,34 +22,32 @@ export const ProductCard = ({ product }) => {
     addToCompareItem,
     isAddedtoCompareItem,
   } = useContextElement();
+
   useEffect(() => {
-    setCurrentImage(product.imgSrc);
-  }, [product]);
+    setCurrentImage(productImage);
+  }, [productImage]);
 
   return (
-    <div className="card-product fl-item" key={product.id}>
+    <div className="card-product fl-item" key={productId}>
       <div className="card-product-wrapper">
-        <Link href={`/product-detail/${product.id}`} className="product-img">
+        <Link href={`/product-detail/${productId}`} className="product-img">
           <Image
             className="lazyload img-product"
-            data-src={product.images}
             src={currentImage}
-            alt="image-product"
+            alt={productName}
             width={720}
             height={1005}
+            priority
           />
           <Image
             className="lazyload img-hover"
-            data-src={
-              product.imgHoverSrc ? product.imgHoverSrc : product.imgSrc
-            }
-            src={product.imgHoverSrc ? product.imgHoverSrc : product.imgSrc}
-            alt="image-product"
+            src={productImage}
+            alt={productName}
             width={720}
             height={1005}
           />
         </Link>
-        {product.soldOut ? (
+        {product.stock === 0 ? (
           <div className="sold-out">
             <span>Sold out</span>
           </div>
@@ -50,7 +56,7 @@ export const ProductCard = ({ product }) => {
             <div className="list-product-btn">
               <a
                 href="#quick_add"
-                onClick={() => setQuickAddItem(product.id)}
+                onClick={() => setQuickAddItem(productId)}
                 data-bs-toggle="modal"
                 className="box-icon bg_white quick-add tf-btn-loading"
               >
@@ -58,40 +64,29 @@ export const ProductCard = ({ product }) => {
                 <span className="tooltip">Quick Add</span>
               </a>
               <a
-                onClick={() => addToWishlist(product.id)}
+                onClick={() => addToWishlist(productId)}
                 className="box-icon bg_white wishlist btn-icon-action"
               >
                 <span
-                  className={`icon icon-heart ${
-                    isAddedtoWishlist(product.id) ? "added" : ""
-                  }`}
+                  className={`icon icon-heart ${isAddedtoWishlist(productId) ? "added" : ""}`}
                 />
                 <span className="tooltip">
-                  {isAddedtoWishlist(product.id)
-                    ? "Already Wishlisted"
-                    : "Add to Wishlist"}
+                  {isAddedtoWishlist(productId) ? "Already Wishlisted" : "Add to Wishlist"}
                 </span>
-                <span className="icon icon-delete" />
               </a>
               <a
                 href="#compare"
                 data-bs-toggle="offcanvas"
                 aria-controls="offcanvasLeft"
-                onClick={() => addToCompareItem(product.id)}
+                onClick={() => addToCompareItem(productId)}
                 className="box-icon bg_white compare btn-icon-action"
               >
                 <span
-                  className={`icon icon-compare ${
-                    isAddedtoCompareItem(product.id) ? "added" : ""
-                  }`}
+                  className={`icon icon-compare ${isAddedtoCompareItem(productId) ? "added" : ""}`}
                 />
                 <span className="tooltip">
-                  {" "}
-                  {isAddedtoCompareItem(product.id)
-                    ? "Already Compared"
-                    : "Add to Compare"}
+                  {isAddedtoCompareItem(productId) ? "Already Compared" : "Add to Compare"}
                 </span>
-                <span className="icon icon-check" />
               </a>
               <a
                 href="#quick_view"
@@ -110,45 +105,15 @@ export const ProductCard = ({ product }) => {
                 </div>
               </div>
             )}
-            {product.sizes && (
-              <div className="size-list">
-                {product.sizes.map((size) => (
-                  <span key={size}>{size}</span>
-                ))}
-              </div>
-            )}
           </>
         )}
       </div>
       <div className="card-product-info">
-        <Link href={`/product-detail/${product.id}`} className="title link">
-          {product.title}
+        <Link href={`/product-detail/${productId}`} className="title link">
+          {productName}
         </Link>
-        <span className="price">${product.price.toFixed(2)}</span>
-        {product.colors && (
-          <ul className="list-color-product">
-            {product.colors.map((color, i) => (
-              <li
-                className={`list-color-item color-swatch ${
-                  currentImage == color.imgSrc ? "active" : ""
-                } `}
-                key={i}
-                onMouseOver={() => setCurrentImage(color.imgSrc)}
-              >
-                <span className="tooltip">{color.name}</span>
-                <span className={`swatch-value ${color.colorClass}`} />
-                <Image
-                  className="lazyload"
-                  data-src={color.imgSrc}
-                  src={color.imgSrc}
-                  alt="image-product"
-                  width={720}
-                  height={1005}
-                />
-              </li>
-            ))}
-          </ul>
-        )}
+        <span className="price">${productPrice.toFixed(2)}</span>
+        <span className="product-category">{productCategory}</span>
       </div>
     </div>
   );

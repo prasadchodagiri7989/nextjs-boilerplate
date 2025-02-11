@@ -1,21 +1,46 @@
 import Footer1 from "@/components/footers/Footer1";
 import Header2 from "@/components/headers/Header2";
-
 import Products from "@/components/shopDetails/Products";
 import RecentProducts from "@/components/shopDetails/RecentProducts";
 import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
-export const metadata = {
-  title: "Shop Details || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
-};
-import { allProducts } from "@/data/products";
 import ProductSinglePrevNext from "@/components/common/ProductSinglePrevNext";
-export default async function page({ params }) {const { id } = await params
-  const product =
-    allProducts.filter((elm) => elm.id == id)[0] || allProducts[0];
+
+export const metadata = {
+  title: "Shop Details || BikersHub",
+  description: "Ecomus",
+};
+
+// Fetch product data from the API
+async function fetchProduct(id) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/products/products/${id}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch product");
+    }
+    const product = await response.json();
+    return product;
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return null;
+  }
+}
+
+export default async function Page({ params }) {
+  const { id } = params;
+
+  // Fetch the product data
+  const product = await fetchProduct(id);
+
+  // If the product is not found, display a fallback or redirect
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
   return (
     <>
       <Header2 />
@@ -27,7 +52,6 @@ export default async function page({ params }) {const { id } = await params
                 Home
               </Link>
               <i className="icon icon-arrow-right" />
-
               <span className="text">
                 {product.title ? product.title : "Cotton jersey top"}
               </span>

@@ -12,11 +12,17 @@ import StickyItem from "./StickyItem";
 import Quantity from "./Quantity";
 
 import Slider1ZoomOuter from "./sliders/Slider1ZoomOuter";
-import { allProducts } from "@/data/products";
 import { useContextElement } from "@/context/Context";
 import { openCartModal } from "@/utlis/openCartModal";
 
-export default function DetailsOuterZoom({ product = allProducts[0] }) {
+export default function DetailsOuterZoom({ product }) {
+
+  const productId = product._id; 
+  const productName = product.name; 
+  const productImage = product.images && product.images.length > 0 ? product.images[0] : "/placeholder.jpg"; // Default image if not available
+  const productPrice = product.price || 0; 
+  const productCategory = product.category || "Unknown"; 
+
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizeOptions[1]);
   const [quantity, setQuantity] = useState(1);
@@ -55,7 +61,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                   <Slider1ZoomOuter
                     handleColor={handleColor}
                     currentColor={currentColor.value}
-                    firstImage={product.imgSrc}
+                    firstImage={productImage}
                   />
                 </div>
               </div>
@@ -66,7 +72,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                 <div className="tf-product-info-list other-image-zoom">
                   <div className="tf-product-info-title">
                     <h5>
-                      {product.title ? product.title : "Cotton jersey top"}
+                      {productName ? productName : "Cotton jersey top"}
                     </h5>
                   </div>
                   <div className="tf-product-info-badges">
@@ -80,7 +86,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                   </div>
                   <div className="tf-product-info-price">
                     <div className="price-on-sale">
-                      ${product.price.toFixed(2)}
+                      ${productPrice.toFixed(2)}
                     </div>
 
                     <div className="compare-at-price">
@@ -189,7 +195,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                       <a
                         onClick={() => {
                           openCartModal();
-                          addProductToCart(product.id, quantity ? quantity : 1);
+                          addProductToCart(productId, quantity ? quantity : 1);
                         }}
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn"
                       >

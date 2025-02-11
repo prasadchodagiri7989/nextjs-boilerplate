@@ -27,7 +27,6 @@ import ToolbarBottom from "@/components/modals/ToolbarBottom";
 import ToolbarShop from "@/components/modals/ToolbarShop";
 
 import { usePathname } from "next/navigation";
-import NewsletterModal from "@/components/modals/NewsletterModal";
 import ShareModal from "@/components/modals/ShareModal";
 import ScrollTop from "@/components/common/ScrollTop";
 import RtlToggle from "@/components/common/RtlToggle";
@@ -183,7 +182,6 @@ export default function RootLayout({ children }) {
           <SearchModal />
           <ToolbarBottom />
           <ToolbarShop />
-          <NewsletterModal />
           <ShareModal />{" "}
         </Context>
         <ScrollTop />

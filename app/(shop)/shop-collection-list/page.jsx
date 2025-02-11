@@ -7,8 +7,8 @@ import React from "react";
 
 export const metadata = {
   title:
-    "Product Collection List || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+    "Product Collection List || BikersHub",
+  description: "Ecomus",
 };
 export default function page() {
   return (

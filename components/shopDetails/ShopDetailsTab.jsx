@@ -42,61 +42,65 @@ export default function ShopDetailsTab() {
                 >
                   <div className="">
                     <p className="mb_30">
-                      Button-up shirt sleeves and a relaxed silhouette. It’s
-                      tailored with drapey, crinkle-texture fabric that’s made
-                      from LENZING™ ECOVERO™ Viscose — responsibly sourced
-                      wood-based fibres produced through a process that reduces
-                      impact on forests, biodiversity and water supply.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                     <div className="tf-product-des-demo">
-                      <div className="right">
-                        <h3 className="fs-16 fw-5">Features</h3>
-                        <ul>
-                          <li>Front button placket</li>
-                          <li>Adjustable sleeve tabs</li>
-                          <li>Babaton embroidered crest at placket and hem</li>
-                        </ul>
-                        <h3 className="fs-16 fw-5">Materials Care</h3>
-                        <ul className="mb-0">
-                          <li>Content: 100% LENZING™ ECOVERO™ Viscose</li>
-                          <li>Care: Hand wash</li>
-                          <li>Imported</li>
-                        </ul>
+                    <div className="right">
+                      <h3 className="fs-16 fw-5">Key Features</h3>
+                      <ul>
+                        <li>High-performance stainless steel construction</li>
+                        <li>Lightweight design for better power-to-weight ratio</li>
+                        <li>Enhanced exhaust flow for improved horsepower</li>
+                        <li>Deep, aggressive sound profile</li>
+                        <li>Corrosion-resistant coating for durability</li>
+                      </ul>
+                      <h3 className="fs-16 fw-5">Specifications</h3>
+                      <ul className="mb-0">
+                        <li>Material: 304 Stainless Steel / Carbon Fiber Tip</li>
+                        <li>Pipe Diameter: 2.5 inches</li>
+                        <li>Weight: 3.2 kg (approx.)</li>
+                        <li>Mounting: Bolt-on / Slip-on installation</li>
+                        <li>Compatibility: Fits most sport and naked bikes</li>
+                      </ul>
+                    </div>
+                    <div className="left">
+                      <h3 className="fs-16 fw-5">Installation & Maintenance</h3>
+                      <div className="d-flex gap-10 mb_15 align-items-center">
+                        <div className="icon">
+                          <i className="icon-tools" />
+                        </div>
+                        <span>Easy bolt-on installation with included hardware.</span>
                       </div>
-                      <div className="left">
-                        <h3 className="fs-16 fw-5">Materials Care</h3>
-                        <div className="d-flex gap-10 mb_15 align-items-center">
-                          <div className="icon">
-                            <i className="icon-machine" />
-                          </div>
-                          <span>Machine wash max. 30ºC. Short spin.</span>
+                      <div className="d-flex gap-10 mb_15 align-items-center">
+                        <div className="icon">
+                          <i className="icon-heat" />
                         </div>
-                        <div className="d-flex gap-10 mb_15 align-items-center">
-                          <div className="icon">
-                            <i className="icon-iron" />
-                          </div>
-                          <span>Iron maximum 110ºC.</span>
+                        <span>Heat-resistant design to withstand high temperatures.</span>
+                      </div>
+                      <div className="d-flex gap-10 mb_15 align-items-center">
+                        <div className="icon">
+                          <i className="icon-water" />
                         </div>
-                        <div className="d-flex gap-10 mb_15 align-items-center">
-                          <div className="icon">
-                            <i className="icon-bleach" />
-                          </div>
-                          <span>Do not bleach/bleach.</span>
+                        <span>Weatherproof and rust-resistant for all-season riding.</span>
+                      </div>
+                      <div className="d-flex gap-10 mb_15 align-items-center">
+                        <div className="icon">
+                          <i className="icon-sound" />
                         </div>
-                        <div className="d-flex gap-10 mb_15 align-items-center">
-                          <div className="icon">
-                            <i className="icon-dry-clean" />
-                          </div>
-                          <span>Do not dry clean.</span>
+                        <span>Optimized sound tuning for deep and aggressive tone.</span>
+                      </div>
+                      <div className="d-flex gap-10 align-items-center">
+                        <div className="icon">
+                          <i className="icon-wrench" />
                         </div>
-                        <div className="d-flex gap-10 align-items-center">
-                          <div className="icon">
-                            <i className="icon-tumble-dry" />
-                          </div>
-                          <span>Tumble dry, medium hear.</span>
-                        </div>
+                        <span>Regular cleaning recommended for longevity.</span>
                       </div>
                     </div>
+                    </div>
+
                   </div>
                 </div>
                 <div
@@ -131,53 +135,40 @@ export default function ShopDetailsTab() {
                       The Company Private Limited Policy
                     </div>
                     <p>
-                      The Company Private Limited and each of their respective
-                      subsidiary, parent and affiliated companies is deemed to
-                      operate this Website (“we” or “us”) recognizes that you
-                      care how information about you is used and shared. We have
-                      created this Privacy Policy to inform you what information
-                      we collect on the Website, how we use your information and
-                      the choices you have about the way your information is
-                      collected and used. Please read this Privacy Policy
-                      carefully. Your use of the Website indicates that you have
-                      read and accepted our privacy practices, as outlined in
-                      this Privacy Policy.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                     <p>
-                      Please be advised that the practices described in this
-                      Privacy Policy apply to information gathered by us or our
-                      subsidiaries, affiliates or agents: (i) through this
-                      Website, (ii) where applicable, through our Customer
-                      Service Department in connection with this Website, (iii)
-                      through information provided to us in our free standing
-                      retail stores, and (iv) through information provided to us
-                      in conjunction with marketing promotions and sweepstakes.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                     <p>
-                      We are not responsible for the content or privacy
-                      practices on any websites.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                     <p>
-                      We reserve the right, in our sole discretion, to modify,
-                      update, add to, discontinue, remove or otherwise change
-                      any portion of this Privacy Policy, in whole or in part,
-                      at any time. When we amend this Privacy Policy, we will
-                      revise the “last updated” date located at the top of this
-                      Privacy Policy.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                     <p>
-                      If you provide information to us or access or use the
-                      Website in any way after this Privacy Policy has been
-                      changed, you will be deemed to have unconditionally
-                      consented and agreed to such changes. The most current
-                      version of this Privacy Policy will be available on the
-                      Website and will supersede all previous versions of this
-                      Privacy Policy.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                     <p>
-                      If you have any questions regarding this Privacy Policy,
-                      you should contact our Customer Service Department by
-                      email at marketing@company.com
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                   </div>
                 </div>
