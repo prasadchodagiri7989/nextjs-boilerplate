@@ -6,10 +6,9 @@ import { useContextElement } from "@/context/Context";
 import CountdownComponent from "../common/Countdown";
 
 export const ProductCard = ({ product }) => {
-  // Extracting data from the backend response
   const productId = product._id; 
   const productName = product.name; 
-  const productImage = product.images && product.images.length > 0 ? product.images[0] : "/placeholder.jpg"; // Default image if not available
+  const productImage = product.images && product.images.length > 0 ? product.images[0] : "https://placehold.co/720x1005"; // Default image if not available
   const productPrice = product.price || 0; 
   const productCategory = product.category || "Unknown"; 
 
@@ -31,21 +30,21 @@ export const ProductCard = ({ product }) => {
     <div className="card-product fl-item" key={productId}>
       <div className="card-product-wrapper">
         <Link href={`/product-detail/${productId}`} className="product-img">
-          <Image
-            className="lazyload img-product"
-            src={currentImage}
-            alt={productName}
-            width={720}
-            height={1005}
-            priority
-          />
-          <Image
-            className="lazyload img-hover"
-            src={productImage}
-            alt={productName}
-            width={720}
-            height={1005}
-          />
+        <Image
+          className="lazyload img-product"
+          src={currentImage}
+          alt={productName || "Product Image"}
+          width={720}
+          height={1005}
+          priority
+        />
+        <Image
+          className="lazyload img-hover"
+          src={productImage}
+          alt={productName || "Product Image"}
+          width={720}
+          height={1005}
+        />
         </Link>
         {product.stock === 0 ? (
           <div className="sold-out">
