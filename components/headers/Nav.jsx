@@ -66,7 +66,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
         <a
           href="#"
           className={`item-link ${Linkfs} ${textColor} ${
-            isMenuActive(allHomepages) ? "activeMenu" : ""
+            isMenuActive(allHomepages) ? "" : ""
           } `}
         >
           Shop By Bike
@@ -78,7 +78,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
               {demoItems.map((item, index) => (
                 <div
                   className={`demo-item ${
-                    isMenuActive(item) ? "activeMenu" : ""
+                    isMenuActive(item) ? "" : ""
                   } `}
                   key={index}
                 >
@@ -127,7 +127,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
         <a
           href="#"
           className={`item-link ${Linkfs} ${textColor} ${
-            isMenuActive(productsPages) ? "activeMenu" : ""
+            isMenuActive(productsPages) ? "" : ""
           } `}
         >
           Motorcycles Accessories
@@ -146,7 +146,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                           <Link
                             href={link.href}
                             className={`menu-link-text link ${
-                              isMenuActive(link) ? "activeMenu" : ""
+                              isMenuActive(link) ? "" : ""
                             }`}
                           >
                             {link.text}
@@ -157,62 +157,6 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                   </div>
                 </div>
               ))}
-              <div className="col-lg-3">
-                <div className="collection-item hover-img">
-                  <div className="collection-inner">
-                    <Link
-                      href={`/home-men`}
-                      className="collection-image img-style"
-                    >
-                      <Image
-                        className="lazyload"
-                        data-src="/images/collections/collection-1.jpg"
-                        alt="collection-demo-1"
-                        src="/images/collections/collection-1.jpg"
-                        width="1000"
-                        height="1215"
-                      />
-                    </Link>
-                    <div className="collection-content">
-                      <Link
-                        href={`/home-men`}
-                        className="tf-btn hover-icon btn-xl collection-title fs-16"
-                      >
-                        <span>Men</span>
-                        <i className="icon icon-arrow1-top-left" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3">
-                <div className="collection-item hover-img">
-                  <div className="collection-inner">
-                    <Link
-                      href={`/shop-women`}
-                      className="collection-image img-style"
-                    >
-                      <Image
-                        className="lazyload"
-                        data-src="/images/collections/collection-2.jpg"
-                        alt="collection-demo-1"
-                        src="/images/collections/collection-2.jpg"
-                        width="500"
-                        height="607"
-                      />
-                    </Link>
-                    <div className="collection-content">
-                      <Link
-                        href={`/shop-women`}
-                        className="tf-btn btn-xl collection-title fs-16 hover-icon"
-                      >
-                        <span>Women</span>
-                        <i className="icon icon-arrow1-top-left" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

@@ -433,6 +433,8 @@ export const demoItems = [
   }
 ];
 
+/*
+
 export const productsPages = [
   {
     heading: "Shop layouts",
@@ -473,293 +475,190 @@ export const productsPages = [
   },
 ];
 
+*/
+
+export const productsPages = [
+  {
+    heading: "Navigation System",
+    links: [{ href: "/collections/navigation-system", text: "Navigation System" }],
+  },
+  {
+    heading: "Auxiliary Lights",
+    links: [
+      { href: "/collections/maddog", text: "Maddog" },
+      { href: "/collections/baja-designs", text: "Baja Designs" },
+      { href: "/collections/future-eye", text: "Future Eyes" },
+      { href: "/collections/denali", text: "Denali" },
+      { href: "/collections/raw-stone", text: "Raw Stone" },
+      { href: "/collections/hjg", text: "HJG" },
+    ],
+  },
+  {
+    heading: "Aluminium Top Box",
+    links: [
+      { href: "/collections/moto-vanguard", text: "Moto VanGuard" },
+      { href: "/collections/lgp", text: "LGP" },
+      { href: "/collections/zana-luggage-system", text: "Zana" },
+      { href: "/collections/jb-racing", text: "JB Racing" },
+    ],
+  },
+  {
+    heading: "Chain & Sprocket",
+    links: [
+      { href: "/collections/rolan", text: "Rolon" },
+      { href: "/", text: "Esjot Sprockets" },
+      { href: "/", text: "DID Chains" },
+    ],
+  },
+  {
+    heading: "Performance Parts",
+    links: [
+      { href: "/collections/red-rooster", text: "Red Rooster" },
+      { href: "/collections/powerage", text: "Powerage" },
+      { href: "/collections/bmc", text: "BMC" },
+      { href: "/collections/powertronics", text: "Powertronics" },
+      { href: "/collections/fuel-x", text: "Fuel X" },
+    ],
+  },
+  {
+    heading: "Hand Guards",
+    links: [
+      { href: "/collections/barkbusters", text: "Barkbuster" },
+      { href: "/", text: "Acerbis" },
+      { href: "/collections/moto-vanguard", text: "MVG" },
+      { href: "/collections/hand-gaurds", text: "Universal Guards" },
+    ],
+  },
+ /* {
+    heading: "Handle Bar & Accessories",
+    links: [
+      { href: "/collections/mirrors", text: "Mirrors" },
+      { href: "/collections/handle-grippers", text: "Handle Grippers" },
+    ],
+  },
+  {
+    heading: "Mobile Holders",
+    links: [
+      { href: "/collections/peak-design", text: "Peak Design" },
+      { href: "/collections/bobo", text: "Bobo" },
+      { href: "/products/hybrid-racing-bike-mobile-holder-without-charging", text: "Hybrid" },
+      { href: "/collections/ram", text: "RAM" },
+    ],
+  },
+  {
+    heading: "Other Accessories",
+    links: [{ href: "/collections/other-accessories", text: "Paddock Stands" }],
+  }, */
+
+];
+
+
 export const productDetailPages = [
   {
-    heading: "Product layouts",
+    heading: "Jackets",
     links: [
-      { href: "/product-detail/1", text: "Product default" },
-      { href: "/product-grid-1/2", text: "Product grid 1" },
-      { href: "/product-grid-2/3", text: "Product grid 2" },
-      { href: "/product-stacked/4", text: "Product stacked" },
-      { href: "/product-right-thumbnails/5", text: "Product right thumbnails" },
-      {
-        href: "/product-bottom-thumbnails/6",
-        text: "Product bottom thumbnails",
-      },
-      { href: "/product-drawer-sidebar/7", text: "Product drawer sidebar" },
-      {
-        href: "/product-description-accordion/8",
-        text: "Product description accordion",
-      },
-      {
-        href: "/product-description-list/10",
-        text: "Product description list",
-      },
-      {
-        href: "/product-description-vertical/11",
-        text: "Product description vertical",
-      },
+      { href: "/collections/viaterra", text: "Viaterra" },
+      { href: "/collections/solace", text: "Solace" },
+      { href: "/collections/rynox", text: "Rynox" },
+      { href: "/collections/ls2", text: "LS2" },
+      { href: "/collections/shield", text: "Shield" },
+      { href: "/collections/cramster-1", text: "Cramster" },
+      { href: "/collections/dsg", text: "DSG" },
+      { href: "/collections/raida", text: "Raida" },
+      { href: "/collections/mototech", text: "Mototech" },
+      { href: "/collections/bbg", text: "Biking Brother Hood" },
+      { href: "/collections/re-gears", text: "Royal Enfield" },
     ],
   },
   {
-    heading: "Product details",
-    links: [
-      { href: "/product-inner-zoom/12", text: "Product inner zoom" },
-      { href: "/product-zoom-magnifier/13", text: "Product zoom magnifier" },
-      { href: "/product-no-zoom/14", text: "Product no zoom" },
-      {
-        href: "/product-photoswipe-popup/15",
-        text: "Product photoswipe popup",
-      },
-      {
-        href: "/product-zoom-popup/16",
-        text: "Product external zoom and photoswipe popup",
-      },
-      { href: "/product-video/17", text: "Product video" },
-      { href: "/product-3d/18", text: "Product 3D, AR models" },
-      {
-        href: "/product-options-customizer/19",
-        text: "Product options & customizer",
-      },
-      { href: "/product-advanced-types/20", text: "Advanced product types" },
-      {
-        href: "/product-giftcard/21",
-        text: "Recipient information form for gift card products",
-      },
-    ],
+    heading: "Pants",
+    links: [{ href: "/collections/riding-pants", text: "Pants" }],
   },
-  {
-    heading: "Product swatches",
-    links: [
-      { href: "/product-color-swatch/22", text: "Product color swatch" },
-      { href: "/product-rectangle/23", text: "Product rectangle" },
-      { href: "/product-rectangle-color/24", text: "Product rectangle color" },
-      { href: "/product-swatch-image/25", text: "Product swatch image" },
-      {
-        href: "/product-swatch-image-rounded/26",
-        text: "Product swatch image rounded",
-      },
-      { href: "/product-swatch-dropdown/27", text: "Product swatch dropdown" },
-      {
-        href: "/product-swatch-dropdown-color/29",
-        text: "Product swatch dropdown color",
-      },
-    ],
-  },
-  {
-    heading: "Product features",
-    links: [
-      {
-        href: "/product-frequently-bought-together/30",
-        text: "Frequently bought together",
-      },
-      {
-        href: "/product-frequently-bought-together-2/31",
-        text: "Frequently bought together 2",
-      },
-      { href: "/product-upsell-features/32", text: "Product upsell features" },
-      { href: "/product-pre-orders/33", text: "Product pre-orders" },
-      { href: "/product-notification/34", text: "Back in stock notification" },
-      { href: "/product-pickup/35", text: "Product pickup" },
-      { href: "/product-images-grouped/36", text: "Variant images grouped" },
-      { href: "/product-complimentary/37", text: "Complimentary products" },
-      {
-        href: "/product-quick-order-list/38",
-        text: "Quick order list",
-        extra: (
-          <div className="demo-label">
-            <span className="demo-new">New</span>
-          </div>
-        ),
-      },
-      {
-        href: "/product-detail-volume-discount/38",
-        text: "Volume Discount",
-        extra: (
-          <div className="demo-label">
-            <span className="demo-new">New</span>
-          </div>
-        ),
-      },
-      {
-        href: "/product-detail-volume-discount-grid/38",
-        text: "Volume Discount Grid",
-        extra: (
-          <div className="demo-label">
-            <span className="demo-new">New</span>
-          </div>
-        ),
-      },
-      {
-        href: "/product-detail-buyx-gety/38",
-        text: "Buy X Get Y",
-        extra: (
-          <div className="demo-label">
-            <span className="demo-new">New</span>
-          </div>
-        ),
-      },
-    ],
-  },
+
 ];
 
 export const pages = [
   {
-    href: "/about-us",
-    text: "About us",
+    href: "#",
+    text: "Jackets",
     className: "menu-link-text link text_black-2",
-    links: null,
+    links: [
+      { href: "/collections/viaterra", text: "Viaterra", className: "menu-link-text link text_black-2" },
+      { href: "/collections/solace", text: "Solace", className: "menu-link-text link text_black-2" },
+      { href: "/collections/rynox", text: "Rynox", className: "menu-link-text link text_black-2" },
+      { href: "/collections/ls2", text: "LS2", className: "menu-link-text link text_black-2" },
+      { href: "/collections/shield", text: "Shield", className: "menu-link-text link text_black-2" },
+      { href: "/collections/cramster-1", text: "Cramster", className: "menu-link-text link text_black-2" },
+      { href: "/collections/dsg", text: "DSG", className: "menu-link-text link text_black-2" },
+      { href: "/collections/raida", text: "Raida", className: "menu-link-text link text_black-2" },
+      { href: "/collections/mototech", text: "Mototech", className: "menu-link-text link text_black-2" },
+      { href: "/collections/bbg", text: "Biking Brother Hood", className: "menu-link-text link text_black-2" },
+      { href: "/collections/re-gears", text: "Royal Enfield", className: "menu-link-text link text_black-2" },
+    ],
   },
+  { href: "/collections/riding-pants", text: "Pants", className: "menu-link-text link text_black-2" },
+  { href: "/collections/riding-gloves", text: "Gloves", className: "menu-link-text link text_black-2" },
+  { href: "/collections/gears-for-women", text: "Gears For Women", className: "menu-link-text link text_black-2" },
+  { href: "/collections/boots", text: "Boots", className: "menu-link-text link text_black-2" },
+  { href: "/collections/knee-elbow-guard", text: "Protectors", className: "menu-link-text link text_black-2" },
+  { href: "/collections/rain-wear", text: "Rain Wear", className: "menu-link-text link text_black-2" },
+  { href: "/collections/other-essentials", text: "Other Essentials", className: "menu-link-text link text_black-2" },
   {
     href: "#",
-    text: "Brands",
+    text: "Helmets",
     className: "menu-link-text link text_black-2",
     links: [
       {
-        href: "/brands",
-        text: "Brands",
-        className: "menu-link-text link text_black-2 position-relative",
-        label: "New",
+        href: "#",
+        text: "Full Face Helmets",
+        className: "menu-link-text link text_black-2",
+        links: [
+          { href: "/collections/mt-helmets", text: "MT Helmets", className: "menu-link-text link text_black-2" },
+          { href: "/collections/ls2", text: "LS2", className: "menu-link-text link text_black-2" },
+          { href: "/collections/kyt", text: "KYT", className: "menu-link-text link text_black-2" },
+          { href: "/collections/axxis", text: "Axxis", className: "menu-link-text link text_black-2" },
+          { href: "/collections/smk", text: "SMK", className: "menu-link-text link text_black-2" },
+          { href: "/collections/axor", text: "Axor", className: "menu-link-text link text_black-2" },
+        ],
       },
       {
-        href: "/brands-v2",
-        text: "Brand V2",
+        href: "#",
+        text: "Moto Cross Helmets",
         className: "menu-link-text link text_black-2",
+        links: [
+          { href: "/collections/axor-moto-cross", text: "Axor", className: "menu-link-text link text_black-2" },
+          { href: "/collections/smk-moto-cross", text: "SMK", className: "menu-link-text link text_black-2" },
+        ],
       },
+      {
+        href: "#",
+        text: "Bluetooth & Intercom",
+        className: "menu-link-text link text_black-2",
+        links: [
+          { href: "/products/cardo-packtalk-custom-single", text: "Cardo", className: "menu-link-text link text_black-2" },
+          { href: "/collections/bluetooth-intercom", text: "Sena", className: "menu-link-text link text_black-2" },
+          { href: "/collections/bluarmor", text: "Bluarmor", className: "menu-link-text link text_black-2" },
+          { href: "/collections/mid-land", text: "Mid Land", className: "menu-link-text link text_black-2" },
+        ],
+      },
+      {
+        href: "#",
+        text: "Helmet Accessories",
+        className: "menu-link-text link text_black-2",
+        links: [
+          { href: "/collections/raleri", text: "Antifog Lens", className: "menu-link-text link text_black-2" },
+          { href: "/collections/motorex", text: "Helmet Care Spray", className: "menu-link-text link text_black-2" },
+          { href: "/collections/go-pro-accessories", text: "GoPro Accessories", className: "menu-link-text link text_black-2" },
+        ],
+      },
+      { href: "/collections/half-face-helmets", text: "Half Face Helmets", className: "menu-link-text link text_black-2" },
+      { href: "/collections/flip-up-helmets", text: "Flip Up Helmets", className: "menu-link-text link text_black-2" },
+      { href: "/collections/kids-helmets", text: "Kids Helmets", className: "menu-link-text link text_black-2" },
     ],
-  },
-  {
-    href: "#",
-    text: "Contact",
-    className: "menu-link-text link text_black-2",
-    links: [
-      {
-        href: "/contact-1",
-        text: "Contact 1",
-        className: "menu-link-text link text_black-2",
-      },
-      {
-        href: "/contact-2",
-        text: "Contact 2",
-        className: "menu-link-text link text_black-2",
-      },
-    ],
-  },
-  {
-    href: "#",
-    text: "FAQ",
-    className: "menu-link-text link text_black-2",
-    links: [
-      {
-        href: "/faq-1",
-        text: "FAQ 01",
-        className: "menu-link-text link text_black-2",
-      },
-      {
-        href: "/faq-2",
-        text: "FAQ 02",
-        className: "menu-link-text link text_black-2",
-      },
-    ],
-  },
-  {
-    href: "#",
-    text: "Store",
-    className: "menu-link-text link text_black-2",
-    links: [
-      {
-        href: "/our-store",
-        text: "Our store",
-        className: "menu-link-text link text_black-2",
-      },
-      {
-        href: "/store-locations",
-        text: "Store locator",
-        className: "menu-link-text link text_black-2",
-      },
-    ],
-  },
-  {
-    href: "/timeline",
-    text: "Timeline",
-    className: "menu-link-text link text_black-2 position-relative",
-    label: "New",
-  },
-  {
-    href: "/view-cart",
-    text: "View cart",
-    className: "menu-link-text link text_black-2 position-relative",
-  },
-  {
-    href: "/checkout",
-    text: "Check out",
-    className: "menu-link-text link text_black-2 position-relative",
-  },
-  {
-    href: "#",
-    text: "Payment",
-    className: "menu-link-text link text_black-2",
-    links: [
-      {
-        href: "/payment-confirmation",
-        text: "Payment Confirmation",
-        className: "menu-link-text link text_black-2",
-      },
-      {
-        href: "/payment-failure",
-        text: "Payment Failure",
-        className: "menu-link-text link text_black-2",
-      },
-    ],
-  },
-  {
-    href: "#",
-    text: "My account",
-    className: "menu-link-text link text_black-2",
-    links: [
-      {
-        href: "/my-account",
-        text: "My account",
-        className: "menu-link-text link text_black-2",
-      },
-      {
-        href: "/my-account-orders",
-        text: "My order",
-        className: "menu-link-text link text_black-2",
-      },
-      {
-        href: "/my-account-orders-details",
-        text: "My order details",
-        className: "menu-link-text link text_black-2",
-      },
-      {
-        href: "/my-account-address",
-        text: "My address",
-        className: "menu-link-text link text_black-2",
-      },
-      {
-        href: "/my-account-edit",
-        text: "My account details",
-        className: "menu-link-text link text_black-2",
-      },
-      {
-        href: "/my-account-wishlist",
-        text: "My wishlist",
-        className: "menu-link-text link text_black-2",
-      },
-    ],
-  },
-  {
-    href: "/invoice",
-    text: "Invoice",
-    className: "menu-link-text link text_black-2 position-relative",
-  },
-  {
-    href: "/page-not-found",
-    text: "404",
-    className: "menu-link-text link text_black-2 position-relative",
   },
 ];
+
+
 
 export const blogLinks = [
   { href: "/blog-grid", text: "Grid layout" },
