@@ -1,7 +1,7 @@
 export const testimonials = [
   {
-    heading: "Best Online Fashion Site",
-    text: "“ I always find something stylish and affordable on this web fashion site ”",
+    heading: "Lorem Ipsum Dolor Sit",
+    text: "“ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae purus non mi suscipit accumsan. ”",
     name: "Robert Smith",
     metas: "Customer from USA",
     imageSrc: "/images/shop/products/img-p2.png",
@@ -10,8 +10,8 @@ export const testimonials = [
     delay: "0s",
   },
   {
-    heading: "Great Selection and Quality",
-    text: "I love the variety of styles and the high-quality clothing on this web fashion site.",
+    heading: "Consectetur Adipiscing Elit",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet elit non orci posuere, ac congue mi tincidunt.",
     name: "Allen Lyn",
     metas: "Customer from France",
     imageSrc: "/images/shop/products/img-p3.png",
@@ -20,8 +20,8 @@ export const testimonials = [
     delay: ".1s",
   },
   {
-    heading: "Best Customer Service",
-    text: "I finally found a web fashion site with stylish and flattering options in my size.",
+    heading: "Vestibulum Vitae Purus",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at turpis vel lacus commodo pharetra id vel mauris.",
     name: "Peter Rope",
     metas: "Customer from USA",
     imageSrc: "/images/shop/products/img-p4.png",
@@ -30,8 +30,8 @@ export const testimonials = [
     delay: ".2s",
   },
   {
-    heading: "Great Selection and Quality",
-    text: "I love the variety of styles and the high-quality clothing on this web fashion site.",
+    heading: "Phasellus Euismod Justo",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus euismod justo nec risus dictum, id laoreet erat sagittis.",
     name: "Hellen Ase",
     metas: "Customer from Japan",
     imageSrc: "/images/shop/products/img-p5.png",
@@ -40,6 +40,7 @@ export const testimonials = [
     delay: ".3s",
   },
 ];
+
 
 export const thumbnails = [
   {

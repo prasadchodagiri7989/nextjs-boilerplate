@@ -1,54 +1,41 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
-export default function Pagination() {
-  // State to track the active page
-  const [activePage, setActivePage] = useState(1);
-
-  // Function to handle page click
-  const handlePageClick = (pageNumber) => {
-    setActivePage(pageNumber);
-  };
+export default function Pagination({ totalPages, currentPage, onPageChange }) {
+  if (totalPages <= 1) return null; // Hide pagination if only 1 page
 
   return (
-    <>
-      <li className={activePage === 1 ? "active" : ""}>
-        <a className="pagination-link" onClick={() => handlePageClick(1)}>
-          1
-        </a>
-      </li>{" "}
-      <li className={activePage === 2 ? "active" : ""}>
-        <a
-          className="pagination-link animate-hover-btn"
-          onClick={() => handlePageClick(2)}
+    <ul className="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
+      {/* Previous Page */}
+      <li className={currentPage === 1 ? "disabled" : ""}>
+        <button
+          className="pagination-link"
+          onClick={() => onPageChange(Math.max(1, currentPage - 1))}
+          disabled={currentPage === 1}
         >
-          2
-        </a>
+          <span className="icon icon-arrow-left" />
+        </button>
       </li>
-      <li className={activePage === 3 ? "active" : ""}>
-        <a
-          className="pagination-link animate-hover-btn"
-          onClick={() => handlePageClick(3)}
-        >
-          3
-        </a>
-      </li>
-      <li className={activePage === 4 ? "active" : ""}>
-        <a
-          className="pagination-link animate-hover-btn"
-          onClick={() => handlePageClick(4)}
-        >
-          4
-        </a>
-      </li>
-      <li>
-        <a
-          onClick={() => setActivePage((pre) => (pre !== 4 ? pre + 1 : pre))}
-          className="pagination-link animate-hover-btn"
+
+      {/* Page Numbers */}
+      {[...Array(totalPages)].map((_, index) => (
+        <li key={index} className={currentPage === index + 1 ? "active" : ""}>
+          <button className="pagination-link" onClick={() => onPageChange(index + 1)}>
+            {index + 1}
+          </button>
+        </li>
+      ))}
+
+      {/* Next Page */}
+      <li className={currentPage === totalPages ? "disabled" : ""}>
+        <button
+          className="pagination-link"
+          onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
+          disabled={currentPage === totalPages}
         >
           <span className="icon icon-arrow-right" />
-        </a>
+        </button>
       </li>
-    </>
+    </ul>
   );
 }

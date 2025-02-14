@@ -10,7 +10,7 @@ export const authOptions = {
         email: { label: "Email", type: "email", placeholder: "abc@xyz.com" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
+      async author5ize(credentials) {
         // 🔹 Call backend API for authentication
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, {
           method: "POST",
@@ -25,7 +25,7 @@ export const authOptions = {
       },
     }),
   ],
-  callbacks: {
+  callbacks: {  
     async jwt({ token, user }) {
       if (user) {
         token.accessToken = user.token; // Save JWT token
