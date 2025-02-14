@@ -1,16 +1,16 @@
 export const collections = [
   {
-    imgSrc: "/images/collections/collection-17.jpg",
+    imgSrc: "/images/collections/category-helmet.jpg",
     altText: "collection-img",
     title: "Helmets",
   },
   {
-    imgSrc: "/images/collections/collection-14.jpg",
+    imgSrc: "/images/collections/category-exhaust.jpg",
     altText: "collection-img",
     title: "Exhaust",
   },
-  {
-    imgSrc: "/images/collections/collection-18.jpg",
+  {     
+    imgSrc: "/images/collections/category-seat.jpg",
     altText: "collection-demo-1",
     title: "Seat",
   },
@@ -1294,36 +1294,37 @@ export const collectionSlides2 = [
 
 export const collectionItems3 = [
   {
-    imgSrc: "/images/collections/collection-8.jpg",
-    alt: "collection-img",
-    title: "Women",
+    imgSrc: "/images/collections/category-helmet.jpg",
+    alt: "bike helmet",
+    title: "Helmets",
   },
   {
-    imgSrc: "/images/collections/collection-9.jpg",
-    alt: "collection-img",
-    title: "Women",
+    imgSrc: "/images/collections/ridergloves.jpg",
+    alt: "riding gloves",
+    title: "Gloves",
   },
   {
-    imgSrc: "/images/collections/collection-10.jpg",
-    alt: "collection-img",
-    title: "Women",
+    imgSrc: "/images/collections/riderjacket.jpg",
+    alt: "riding jacket",
+    title: "Riding Jackets",
   },
   {
-    imgSrc: "/images/collections/collection-11.jpg",
-    alt: "collection-img",
-    title: "Women",
+    imgSrc: "/images/collections/riderboots.jpg",
+    alt: "riding boots",
+    title: "Riding Boots",
   },
   {
-    imgSrc: "/images/collections/collection-12.jpg",
-    alt: "collection-img",
-    title: "Women",
+    imgSrc: "/images/collections/bikecover.jpg",
+    alt: "bike covers",
+    title: "Bike Covers",
   },
   {
-    imgSrc: "/images/collections/collection-13.jpg",
-    alt: "collection-img",
-    title: "Women",
+    imgSrc: "/images/collections/bikelight.jpg",
+    alt: "bike lights",
+    title: "Bike Lights",
   },
 ];
+
 
 export const collectionItems5 = [
   {
