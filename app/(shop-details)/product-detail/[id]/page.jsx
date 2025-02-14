@@ -31,7 +31,7 @@ async function fetchProduct(id) {
 }
 
 export default async function Page({ params }) {
-  const { id } = params;
+  const { id } = await params;
 
   // Fetch the product data
   const product = await fetchProduct(id);
