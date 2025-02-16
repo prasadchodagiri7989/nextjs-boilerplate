@@ -91,7 +91,7 @@ export default function ProductStyle1() {
           </div>
         </div>
       </section>
-      <ShopFilter setProducts={setProducts} />
+      <ShopFilter setProducts={setProducts} products={products}/>
     </>
   );
 }
