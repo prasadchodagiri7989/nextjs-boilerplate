@@ -165,7 +165,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
         <a
           href="#"
           className={`item-link ${Linkfs} ${textColor}  ${
-            isMenuActive(productDetailPages) ? "activeMenu" : ""
+            isMenuActive(productDetailPages) ? "" : ""
           }`}
         >
           Riding Gears
@@ -247,7 +247,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                   <a
                     href={item.href}
                     className={`${item.className} ${
-                      isMenuActive(item.links) ? "activeMenu" : ""
+                      isMenuActive(item.links) ? "" : ""
                     }`}
                   >
                     {item.text}
@@ -256,7 +256,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                   <Link
                     href={item.href}
                     className={`${item.className}  ${
-                      isMenuActive(item) ? "activeMenu" : ""
+                      isMenuActive(item) ? "" : ""
                     }`}
                     style={{ position: "relative" }}
                   >
@@ -277,7 +277,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                           <Link
                             href={subItem.href}
                             className={`${subItem.className} ${
-                              isMenuActive(subItem) ? "activeMenu" : ""
+                              isMenuActive(subItem) ? "" : ""
                             }`}
                           >
                             {subItem.text}
@@ -303,7 +303,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
         <a
           href="#"
           className={`item-link ${Linkfs} ${textColor}  ${
-            isMenuActive(blogLinks) ? "activeMenu" : ""
+            isMenuActive(blogLinks) ? "" : ""
           }`}
         >
           Shop By Biker
@@ -316,7 +316,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                 <Link
                   href={linkItem.href}
                   className={`menu-link-text link text_black-2  ${
-                    isMenuActive(linkItem) ? "activeMenu" : ""
+                    isMenuActive(linkItem) ? "" : ""
                   }`}
                 >
                   {linkItem.text}
