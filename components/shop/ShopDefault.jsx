@@ -14,9 +14,8 @@ export default function ShopDefault({ collectionId }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1); // Store total pages
+  const [totalPages, setTotalPages] = useState(1);
 
-  // ✅ Fetch products for the given collection & page
   const fetchProducts = useCallback(async () => {
     if (!collectionId) {
       setError("Collection ID is missing");

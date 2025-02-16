@@ -1,5 +1,6 @@
 import Footer1 from "@/components/footers/Footer1";
 import Header2 from "@/components/headers/Header2";
+import ShopCollections from "@/components/shop/ShopCollections";
 import ShopDefault from "@/components/shop/ShopDefault";
 import React from "react";
 
@@ -23,7 +24,7 @@ export default async function Page({ params }) {
         </div>
       </div>
 
-      <ShopDefault collectionId={id} />
+      <ShopCollections collectionId={id} />
 
       <Footer1 />
     </>
