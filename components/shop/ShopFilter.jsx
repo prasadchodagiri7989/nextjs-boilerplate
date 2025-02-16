@@ -1,6 +1,8 @@
 "use client";
-
 import { useEffect, useState } from "react";
+import Slider from "rc-slider";
+import Link from "next/link";
+
 const categories = [
   { id: 1, name: "Fashion", isActive: true, link: "/shop-default" },
   { id: 2, name: "Men", isActive: false, link: "/shop-men" },
@@ -31,112 +33,36 @@ const availabilities = [
   { id: 2, isAvailable: false, text: "Out of Stock", count: 2 },
 ];
 const sizes = ["S", "M", "L", "XL"];
-import Slider from "rc-slider";
-import { products1 } from "@/data/products";
-import Link from "next/link";
-export default function ShopFilter({ setProducts, products = products1 }) {
-  const [price, setPrice] = useState([10, 20]);
-  const handlePrice = (value) => {
-    setPrice(value);
-  };
+
+export default function ShopFilter({ setFilteredProducts, products }) {
+  const [price, setPrice] = useState([1000, 200000]);
   const [selectedColors, setSelectedColors] = useState([]);
-  const handleSelectColor = (color) => {
-    if (selectedColors.includes(color)) {
-      setSelectedColors((pre) => [...pre.filter((el) => el != color)]);
-    } else {
-      setSelectedColors((pre) => [...pre, color]);
-    }
-  };
   const [selectedBrands, setSelectedBrands] = useState([]);
-  const handleSelectBrand = (brand) => {
-    if (selectedBrands.includes(brand)) {
-      setSelectedBrands((pre) => [...pre.filter((el) => el != brand)]);
-    } else {
-      setSelectedBrands((pre) => [...pre, brand]);
-    }
-  };
   const [selectedAvailabilities, setSelectedAvailabilities] = useState([]);
-  const handleSelectAvailabilities = (availability) => {
-    if (selectedAvailabilities.includes(availability)) {
-      setSelectedAvailabilities((pre) => [
-        ...pre.filter((el) => el != availability),
-      ]);
-    } else {
-      setSelectedAvailabilities((pre) => [...pre, availability]);
-    }
-  };
   const [selectedSizes, setSelectedSizes] = useState([]);
-  const handleSelectSizes = (size) => {
-    if (selectedSizes.includes(size)) {
-      setSelectedSizes((pre) => [...pre.filter((el) => el != size)]);
-    } else {
-      setSelectedSizes((pre) => [...pre, size]);
-    }
+
+  const handlePrice = (value) => {
+    setPrice(value); // Update the price state
   };
 
   useEffect(() => {
-    let filteredArrays = [];
-
-    filteredArrays = [
-      ...filteredArrays,
-      [
-        ...products.filter(
-          (elm) => elm.price >= price[0] && elm.price <= price[1]
-        ),
-      ],
-    ];
-    // console.log(filteredByPrice, "filteredByPrice");
-    if (selectedColors.length) {
-      filteredArrays = [
-        ...filteredArrays,
-        [
-          ...products.filter((elm) =>
-            elm.colors
-              ?.map((el2) => el2.name)
-              .some((el3) => selectedColors.includes(el3))
-          ),
-        ],
-      ];
-    }
-
-    // console.log(filteredByselectedColors, "filteredByselectedColors");
-    if (selectedBrands.length) {
-      filteredArrays = [
-        ...filteredArrays,
-        [...products.filter((elm) => selectedBrands.includes(elm.brand))],
-      ];
-    }
-
-    // console.log(filteredByselectedBrands, "filteredByselectedBrands");
-    if (selectedSizes.length) {
-      filteredArrays = [
-        ...filteredArrays,
-        [
-          ...products.filter((elm) =>
-            elm.sizes?.some((elm2) => selectedSizes.includes(elm2))
-          ),
-        ],
-      ];
-    }
-
-    // console.log(filteredByselectedSizes);
-    if (selectedAvailabilities.length) {
-      filteredArrays = [
-        ...filteredArrays,
-        [
-          ...products.filter((elm) =>
-            selectedAvailabilities
-              .map((elm3) => elm3.isAvailable)
-              .some((elm4) => elm4 == elm.isAvailable)
-          ),
-        ],
-      ];
-    }
-
-    const commonItems = products.filter((item) =>
-      filteredArrays.every((array) => array.includes(item))
+    let filtered = products.filter(
+      (product) =>
+        product.price >= price[0] &&
+        product.price <= price[1] &&
+        (selectedColors.length === 0 ||
+          selectedColors.some((color) =>
+            product.colors?.map((c) => c.name).includes(color)
+          )) &&
+        (selectedBrands.length === 0 || selectedBrands.includes(product.brand)) &&
+        (selectedSizes.length === 0 || selectedSizes.some((size) => product.sizes?.includes(size))) &&
+        (selectedAvailabilities.length === 0 ||
+          selectedAvailabilities.some(
+            (avail) => avail.isAvailable === product.isAvailable
+          ))
     );
-    setProducts(commonItems);
+
+    setFilteredProducts(filtered);
   }, [
     price,
     selectedColors,
@@ -145,13 +71,16 @@ export default function ShopFilter({ setProducts, products = products1 }) {
     selectedSizes,
     products,
   ]);
+
   const clearFilter = () => {
     setSelectedColors([]);
     setSelectedBrands([]);
     setSelectedAvailabilities([]);
     setSelectedSizes([]);
-    setPrice([10, 20]);
+    setPrice([1000, 200000]);
+    setFilteredProducts(products);
   };
+
   return (
     <div className="offcanvas offcanvas-start canvas-filter" id="filterShop">
       <div className="canvas-wrapper">
@@ -261,8 +190,8 @@ export default function ShopFilter({ setProducts, products = products1 }) {
                   <Slider
                     formatLabel={() => ``}
                     range
-                    max={22}
-                    min={5}
+                    max={200000}
+                    min={100}
                     defaultValue={price}
                     onChange={(value) => handlePrice(value)}
                     id="slider"

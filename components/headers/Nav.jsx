@@ -183,9 +183,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                         <li key={linkIndex}>
                           <Link
                             href={linkItem.href}
-                            className={`menu-link-text link position-relative  ${
-                              isMenuActive(linkItem) ? "activeMenu" : ""
-                            }`}
+                            className={`menu-link-text link position-relative  `}
                           >
                             {linkItem.text}
                             {linkItem.extra}

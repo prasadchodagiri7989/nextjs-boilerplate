@@ -9,6 +9,7 @@ import Sorting from "./Sorting";
 export default function ShopDefault({ collectionId }) {
   const [gridItems, setGridItems] = useState(4);
   const [products, setProducts] = useState([]); // Stores fetched products
+  const [filteredProducts, setFilteredProducts] = useState([]); // Stores filtered products
   const [finalSorted, setFinalSorted] = useState([]); // Stores sorted products
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -33,6 +34,7 @@ export default function ShopDefault({ collectionId }) {
       console.log(`Fetched products for collection "${collectionId}", Page ${currentPage}:`, data);
 
       setProducts(data.products || []);
+      setFilteredProducts(data.products || []); // Initialize filteredProducts with fetched products
       setFinalSorted(data.products || []);
       setTotalPages(data.totalPages || 1);
     } catch (err) {
@@ -86,11 +88,11 @@ export default function ShopDefault({ collectionId }) {
 
             {/* Sorting Dropdown */}
             <div className="tf-control-sorting d-flex justify-content-end">
-              <div className="tf-dropdown-sort" data-bs-toggle="dropdown">
-                <Sorting setFinalSorted={setFinalSorted} products={products} />
+              <div className="tf-dropdown-sort" data-bs-toggle="dropdown" style={{display: 'none'}}>
+                <Sorting setFinalSorted={setFinalSorted} products={filteredProducts} />
               </div>
-            </div>
-          </div>
+            </div> 
+          </div> 
 
           {/* Products Display */}
           <div className="wrapper-control-shop">
@@ -111,7 +113,10 @@ export default function ShopDefault({ collectionId }) {
       </section>
 
       {/* Filters Section */}
-      <ShopFilter setProducts={setProducts} />
+      <ShopFilter
+        setFilteredProducts={setFilteredProducts}
+        products={products}
+      />
     </>
   );
 }

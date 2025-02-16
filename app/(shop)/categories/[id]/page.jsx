@@ -3,8 +3,8 @@ import Header2 from "@/components/headers/Header2";
 import ShopCategory from "@/components/shop/ShopCategory";
 import React from "react";
 
-export default function Page({ params }) {
-  const { id } = params || {};
+export default async function Page({ params }) {
+  const { id } = await params || {};
 
   if (!id) {
     console.error("Error: Collection ID is missing in params.");
@@ -23,7 +23,7 @@ export default function Page({ params }) {
         </div>
       </div>
 
-      <ShopCategory collectionId={id} />
+      <ShopCategory collectionId={id}/>
 
       <Footer1 />
     </>
