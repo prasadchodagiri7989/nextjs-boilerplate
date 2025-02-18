@@ -21,22 +21,22 @@ export const iconBoxData = [
   {
     iconClass: "icon-shipping",
     title: "Free Shipping",
-    description: "Free shipping over order $120",
+    description: "Lorem Ipsum Dolor Sit",
   },
   {
     iconClass: "icon-payment fs-22",
     title: "Flexible Payment",
-    description: "Pay with Multiple Credit Cards",
+    description: "Lorem Ipsum Dolor Sit",
   },
   {
     iconClass: "icon-return fs-20",
     title: "14 Day Returns",
-    description: "Within 30 days for an exchange",
+    description: "Lorem Ipsum Dolor Sit",
   },
   {
     iconClass: "icon-suport",
     title: "Premium Support",
-    description: "Outstanding premium support",
+    description: "Lorem Ipsum Dolor Sit",
   },
   {
     iconClass: "icon-shipping",

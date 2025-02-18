@@ -86,7 +86,7 @@ export default function DetailsOuterZoom({ product }) {
                   </div>
                   <div className="tf-product-info-price">
                     <div className="price-on-sale">
-                      ${productPrice.toFixed(2)}
+                      Rs.{productPrice.toFixed(2)}
                     </div>
 
                     <div className="compare-at-price">
@@ -112,78 +112,6 @@ export default function DetailsOuterZoom({ product }) {
                           <CountdownComponent labels="Days :,Hours :,Mins :,Secs" />
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="tf-product-info-variant-picker">
-                    <div className="variant-picker-item">
-                      <div className="variant-picker-label">
-                        Color:
-                        <span className="fw-6 variant-picker-label-value">
-                          {currentColor.value}
-                        </span>
-                      </div>
-                      <form className="variant-picker-values">
-                        {colors.map((color) => (
-                          <React.Fragment key={color.id}>
-                            <input
-                              id={color.id}
-                              type="radio"
-                              name="color1"
-                              readOnly
-                              checked={currentColor == color}
-                            />
-                            <label
-                              onClick={() => setCurrentColor(color)}
-                              className="hover-tooltip radius-60"
-                              htmlFor={color.id}
-                              data-value={color.value}
-                            >
-                              <span
-                                className={`btn-checkbox ${color.className}`}
-                              />
-                              <span className="tooltip">{color.value}</span>
-                            </label>
-                          </React.Fragment>
-                        ))}
-                      </form>
-                    </div>
-                    <div className="variant-picker-item">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div className="variant-picker-label">
-                          Size:
-                          <span className="fw-6 variant-picker-label-value">
-                            {currentSize.value}
-                          </span>
-                        </div>
-                        <a
-                          href="#find_size"
-                          data-bs-toggle="modal"
-                          className="find-size fw-6"
-                        >
-                          Find your size
-                        </a>
-                      </div>
-                      <form className="variant-picker-values">
-                        {sizeOptions.map((size) => (
-                          <React.Fragment key={size.id}>
-                            <input
-                              type="radio"
-                              name="size1"
-                              id={size.id}
-                              readOnly
-                              checked={currentSize == size}
-                            />
-                            <label
-                              onClick={() => setCurrentSize(size)}
-                              className="style-text"
-                              htmlFor={size.id}
-                              data-value={size.value}
-                            >
-                              <p>{size.value}</p>
-                            </label>
-                          </React.Fragment>
-                        ))}
-                      </form>
                     </div>
                   </div>
                   <div className="tf-product-info-quantity">
@@ -250,7 +178,7 @@ export default function DetailsOuterZoom({ product }) {
                           Buy with
                           <Image
                             alt="image"
-                            src="/images/payments/paypal.png"
+                            src="/images/sample/phnpe.png"
                             width={64}
                             height={18}
                           />
@@ -262,21 +190,6 @@ export default function DetailsOuterZoom({ product }) {
                     </form>
                   </div>
                   <div className="tf-product-info-extra-link">
-                    <a
-                      href="#compare_color"
-                      data-bs-toggle="modal"
-                      className="tf-product-extra-icon"
-                    >
-                      <div className="icon">
-                        <Image
-                          alt="image"
-                          src="/images/item/compare.svg"
-                          width={20}
-                          height={20}
-                        />
-                      </div>
-                      <div className="text fw-6">Compare color</div>
-                    </a>
                     <a
                       href="#ask_question"
                       data-bs-toggle="modal"

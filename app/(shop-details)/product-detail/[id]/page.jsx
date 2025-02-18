@@ -33,10 +33,8 @@ async function fetchProduct(id) {
 export default async function Page({ params }) {
   const { id } = await params;
 
-  // Fetch the product data
   const product = await fetchProduct(id);
 
-  // If the product is not found, display a fallback or redirect
   if (!product) {
     return <div>Product not found</div>;
   }

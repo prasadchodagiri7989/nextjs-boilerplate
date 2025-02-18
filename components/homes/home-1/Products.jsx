@@ -38,7 +38,7 @@ export default function Products() {
         </div>
         <div className="grid-layout wow fadeInUp" data-wow-delay="0s" data-grid="grid-4">
           {products.length > 0 ? (
-            products.map((product) => <ProductCard product={product} key={product._id} />)
+            products.map((product) => <ProductCard product={product} key={product._id} br="1px"/>)
           ) : (
             <p>No products available</p>
           )}

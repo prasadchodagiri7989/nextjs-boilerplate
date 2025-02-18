@@ -2,6 +2,7 @@
 import React from "react";
 
 export default function ShareModal() {
+
   return (
     <div
       className="modal modalCentered fade modalDemo tf-product-modal modal-part-content"
@@ -53,7 +54,7 @@ export default function ShareModal() {
               <fieldset>
                 <input
                   type="text"
-                  defaultValue="https://themesflat.co/html/ecomus/"
+                  defaultValue={window.location.href}
                   tabIndex={0}
                   aria-required="true"
                 />

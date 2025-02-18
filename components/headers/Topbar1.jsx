@@ -60,7 +60,7 @@ export default function Topbar1() {
             >
               <SwiperSlide className="swiper-slide">
                 <p className="top-bar-text fw-5">
-                  Spring Fashion Sale{" "}
+                Lorem ipsum dolor sit amet.{" "}
                   <Link
                     href={`/shop-default`}
                     title="all collection"
@@ -73,12 +73,12 @@ export default function Topbar1() {
               </SwiperSlide>
               <SwiperSlide className="swiper-slide">
                 <p className="top-bar-text fw-5">
-                  Summer sale discount off 70%
+                Lorem ipsum dolor sit amet.
                 </p>
               </SwiperSlide>
               <SwiperSlide className="swiper-slide">
                 <p className="top-bar-text fw-5">
-                  Time to refresh your wardrobe.
+                Lorem ipsum dolor sit amet.
                 </p>
               </SwiperSlide>
             </Swiper>

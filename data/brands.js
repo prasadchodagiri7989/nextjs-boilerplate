@@ -1,42 +1,42 @@
 export const brandData = [
   {
-    src: "/images/brand/brand-01.png",
+    src: "/images/sample/sample2.jpg",
     alt: "image-brand-01",
     width: 398,
     height: 164,
   },
   {
-    src: "/images/brand/brand-02.png",
+    src: "/images/sample/sample2.jpg",
     alt: "image-brand-02",
     width: 398,
     height: 164,
   },
   {
-    src: "/images/brand/brand-03.png",
+    src: "/images/sample/sample2.jpg",
     alt: "image-brand-03",
     width: 398,
     height: 164,
   },
   {
-    src: "/images/brand/brand-04.png",
+    src: "/images/sample/sample2.jpg",
     alt: "image-brand-04",
     width: 398,
     height: 164,
   },
   {
-    src: "/images/brand/brand-05.png",
+    src: "/images/sample/sample2.jpg",
     alt: "image-brand-05",
     width: 398,
     height: 164,
   },
   {
-    src: "/images/brand/brand-06.png",
+    src: "/images/sample/sample2.jpg",
     alt: "image-brand-06",
     width: 398,
     height: 164,
   },
   {
-    src: "/images/brand/brand-04.png",
+    src: "/images/sample/sample2.jpg",
     alt: "image-brand-04",
     width: 398,
     height: 164,
@@ -44,25 +44,25 @@ export const brandData = [
 ];
 export const brandData2 = [
   {
-    src: "/images/brand/brand-07.png",
+    src: "/images/sample/sample2.jpg",
     alt: "image-brand-01",
     width: 398,
     height: 164,
   },
   {
-    src: "/images/brand/brand-08.png",
+    src: "/images/sample/sample2.jpg",
     alt: "image-brand-02",
     width: 398,
     height: 164,
   },
   {
-    src: "/images/brand/brand-09.png",
+    src: "/images/sample/sample2.jpg",
     alt: "image-brand-03",
     width: 398,
     height: 164,
   },
   {
-    src: "/images/brand/brand-10.png",
+    src: "/images/sample/sample2.jpg",
     alt: "image-brand-04",
     width: 398,
     height: 164,

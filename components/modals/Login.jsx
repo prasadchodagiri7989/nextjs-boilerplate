@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -71,6 +72,13 @@ export default function Login() {
                 </button>
               </div>
             </form>
+        <div className="tf-login-content">
+            <h5 className="" style={{marginTop: "20px"}}>I'm new here</h5>
+            <Link href={`/register`} className="tf-btn btn-line">
+              Register
+              <i className="icon icon-arrow1-top-left" />
+            </Link>
+          </div>
           </div>
         </div>
       </div>

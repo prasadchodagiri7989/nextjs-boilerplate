@@ -4844,7 +4844,7 @@ export const bundleproducts = [
 export const galleryData = [
   {
     id: 301,
-    imgSrc: "/images/shop/gallery/gallery-7.jpg",
+    imgSrc: "/images/sample/sample.jpg",
     alt: "image-gallery-7",
     wowDelay: ".2s",
     QuickAdd: true,
@@ -4854,7 +4854,7 @@ export const galleryData = [
   },
   {
     id: 302,
-    imgSrc: "/images/shop/gallery/gallery-3.jpg",
+    imgSrc: "/images/sample/sample.jpg",
     alt: "image-gallery-3",
     wowDelay: ".3s",
     QuickAdd: true,
@@ -4864,7 +4864,7 @@ export const galleryData = [
   },
   {
     id: 303,
-    imgSrc: "/images/shop/gallery/gallery-5.jpg",
+    imgSrc: "/images/sample/sample.jpg",
     alt: "image-gallery-5",
     wowDelay: ".4s",
     QuickAdd: true,
@@ -4874,7 +4874,7 @@ export const galleryData = [
   },
   {
     id: 304,
-    imgSrc: "/images/shop/gallery/gallery-8.jpg",
+    imgSrc: "/images/sample/sample.jpg",
     alt: "image-gallery-8",
     wowDelay: ".5s",
 
@@ -4884,7 +4884,7 @@ export const galleryData = [
   },
   {
     id: 305,
-    imgSrc: "/images/shop/gallery/gallery-6.jpg",
+    imgSrc: "/images/sample/sample.jpg",
     alt: "image-gallery-6",
     wowDelay: ".6s",
 

@@ -29,15 +29,11 @@ import ToolbarShop from "@/components/modals/ToolbarShop";
 import { usePathname } from "next/navigation";
 import ShareModal from "@/components/modals/ShareModal";
 import ScrollTop from "@/components/common/ScrollTop";
-import RtlToggle from "@/components/common/RtlToggle";
-
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Import the script only on the client side
       import("bootstrap/dist/js/bootstrap.esm").then(() => {
-        // Module is imported, you can access any exported functionality if
       });
     }
   }, []);
@@ -53,11 +49,10 @@ export default function RootLayout({ children }) {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup function to remove event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
+  }, []); 
 
   const [scrollDirection, setScrollDirection] = useState("down");
 
@@ -164,7 +159,6 @@ export default function RootLayout({ children }) {
         </div>{" "}
         <Context>
           <div id="wrapper">{children}</div>
-          <RtlToggle />
           <HomesModal /> <QuickView />
           <QuickAdd />
           <ProductSidebar />

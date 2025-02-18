@@ -21,13 +21,12 @@ export default function Footer1({ bgColor = "" }) {
       heading.addEventListener("click", toggleOpen);
     });
 
-    // Clean up event listeners when the component unmounts
     return () => {
       headings.forEach((heading) => {
         heading.removeEventListener("click", toggleOpen);
       });
     };
-  }, []); // Empty dependency array means this will run only once on mount
+  }, []);
 
   const formRef = useRef();
   const [success, setSuccess] = useState(true);
@@ -41,7 +40,7 @@ export default function Footer1({ bgColor = "" }) {
   };
 
   const sendEmail = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
     const email = e.target.email.value;
 
     try {
@@ -89,13 +88,13 @@ export default function Footer1({ bgColor = "" }) {
                   <ul>
                     <li>
                       <p>
-                        Address: 1234 Fashion Street, Suite 567, <br />
-                        New York, NY 10001
+                        Address: Lorem ipsum dolor sit amet <br />
+                        Lorem ipsum dolor sit amet
                       </p>
                     </li>
                     <li>
                       <p>
-                        Email: <a href="#">info@fashionshop.com</a>
+                        Email: <a href="#">Lorem@ipsum.com</a>
                       </p>
                     </li>
                     <li>
@@ -196,8 +195,7 @@ export default function Footer1({ bgColor = "" }) {
                   </div>
                   <div className="tf-collapse-content">
                     <div className="footer-menu_item">
-                      Sign up to get first dibs on new arrivals, sales,
-                      exclusive content, events and more!
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet elit non orci posuere
                     </div>
                     <div
                       className={`tfSubscribeMsg ${
@@ -206,10 +204,10 @@ export default function Footer1({ bgColor = "" }) {
                     >
                       {success ? (
                         <p style={{ color: "rgb(52, 168, 83)" }}>
-                          You have successfully subscribed.
+                          Lorem ipsum dolor sit amet
                         </p>
                       ) : (
-                        <p style={{ color: "red" }}>Something went wrong</p>
+                        <p style={{ color: "red" }}>Lorem ipsum dolor sit amet</p>
                       )}
                     </div>
                     <form
@@ -246,14 +244,6 @@ export default function Footer1({ bgColor = "" }) {
                       </div>
                       <div className="subscribe-msg" />
                     </form>
-                    <div className="tf-cur">
-                      <div className="tf-currencies">
-                        <CurrencySelect />
-                      </div>
-                      <div className="tf-languages">
-                        <LanguageSelect />
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -266,7 +256,7 @@ export default function Footer1({ bgColor = "" }) {
               <div className="col-12">
                 <div className="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
                   <div className="footer-menu_item">
-                    © {new Date().getFullYear()} Ecomus Store. All Rights
+                    © {new Date().getFullYear()} BikersHub Store. All Rights
                     Reserved
                   </div>
                   <div className="tf-payment">
