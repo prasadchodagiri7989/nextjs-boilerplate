@@ -40,7 +40,7 @@ export default function Products() {
           {products.length > 0 ? (
             products.map((product) => <ProductCard product={product} key={product._id} br="1px"/>)
           ) : (
-            <p>No products available</p>
+            <p></p>
           )}
         </div>
         {!loaded && (
