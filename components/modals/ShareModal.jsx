@@ -54,7 +54,7 @@ export default function ShareModal() {
               <fieldset>
                 <input
                   type="text"
-                  defaultValue={window.location.href}
+                  defaultValue="https://sample.com"
                   tabIndex={0}
                   aria-required="true"
                 />
