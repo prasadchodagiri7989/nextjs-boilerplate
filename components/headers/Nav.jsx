@@ -110,7 +110,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                 </div>
               ))}
             </div>
-            <div className="text-center view-all-demo">
+            {/*<div className="text-center view-all-demo">
               <a
                 href="#modalDemo"
                 data-bs-toggle="modal"
@@ -119,7 +119,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                 <span>View all demos (46+)</span>
                 <i className="icon icon-arrow-right" />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </li>
