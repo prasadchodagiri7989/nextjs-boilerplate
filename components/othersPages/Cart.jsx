@@ -6,7 +6,7 @@ export default function Cart() {
   const { cartProducts, setCartProducts, totalPrice } = useContextElement();
   const setQuantity = (id, quantity) => {
     if (quantity >= 1) {
-      const item = cartProducts.filter((elm) => elm.id == id)[0];
+      const item = cartProducts.filter((elm) => elm._id == id)[0];
       const items = [...cartProducts];
       const itemIndex = items.indexOf(item);
       item.quantity = quantity;
@@ -15,7 +15,7 @@ export default function Cart() {
     }
   };
   const removeItem = (id) => {
-    setCartProducts((pre) => [...pre.filter((elm) => elm.id != id)]);
+    setCartProducts((pre) => [...pre.filter((elm) => elm._id != id)]);
   };
   return (
     <section className="flat-spacing-11">
@@ -66,27 +66,27 @@ export default function Cart() {
                     <tr key={i} className="tf-cart-item file-delete">
                       <td className="tf-cart-item_product">
                         <Link
-                          href={`/product-detail/${elm.id}`}
+                          href={`/product-detail/${elm._id}`}
                           className="img-box"
                         >
                           <Image
                             alt="img-product"
-                            src={elm.imgSrc}
+                            src={elm.images[0]}
                             width={668}
                             height={932}
                           />
                         </Link>
                         <div className="cart-info">
                           <Link
-                            href={`/product-detail/${elm.id}`}
+                            href={`/product-detail/${elm._id}`}
                             className="cart-title link"
                           >
                             {elm.title}
                           </Link>
-                          <div className="cart-meta-variant">White / M</div>
+                          <div className="cart-meta-variant">{elm.name}</div>
                           <span
                             className="remove-cart link remove"
-                            onClick={() => removeItem(elm.id)}
+                            onClick={() => removeItem(elm._id)}
                           >
                             Remove
                           </span>
@@ -109,7 +109,7 @@ export default function Cart() {
                             <span
                               className="btn-quantity minus-btn"
                               onClick={() =>
-                                setQuantity(elm.id, elm.quantity - 1)
+                                setQuantity(elm._id, elm.quantity - 1)
                               }
                             >
                               <svg
@@ -128,13 +128,13 @@ export default function Cart() {
                               value={elm.quantity}
                               min={1}
                               onChange={(e) =>
-                                setQuantity(elm.id, e.target.value / 1)
+                                setQuantity(elm._id, e.target.value / 1)
                               }
                             />
                             <span
                               className="btn-quantity plus-btn"
                               onClick={() =>
-                                setQuantity(elm.id, elm.quantity + 1)
+                                setQuantity(elm._id, elm.quantity + 1)
                               }
                             >
                               <svg

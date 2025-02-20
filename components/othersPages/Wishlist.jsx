@@ -12,7 +12,7 @@ export default function Wishlist() {
     if (wishList) {
       console.log(wishList);
       setWishListItems(
-        [...allProducts].filter((el) => wishList.includes(el.id))
+        [...wishList]
       );
     }
   }, [wishList]);

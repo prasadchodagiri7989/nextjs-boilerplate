@@ -1,21 +1,52 @@
 "use client";
-import { allProducts } from "@/data/products";
 import { openCartModal } from "@/utlis/openCartModal";
-// import { openCart } from "@/utlis/toggleCart";
-import React, { useEffect } from "react";
-import { useContext, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 const dataContext = React.createContext();
 export const useContextElement = () => {
   return useContext(dataContext);
 };
 
 export default function Context({ children }) {
+
+  const dummmyData = [
+    {
+      id: 1,
+      imgSrc: "/images/products/orange-1.jpg",
+      imgHoverSrc: "/images/products/white-1.jpg",
+      title: "Ribbed Tank Top",
+      price: 16.95,
+      colors: [
+        {
+          name: "Orange",
+          colorClass: "bg_orange-3",
+          imgSrc: "/images/products/orange-1.jpg",
+        },
+        {
+          name: "Black",
+          colorClass: "bg_dark",
+          imgSrc: "/images/products/black-1.jpg",
+        },
+        {
+          name: "White",
+          colorClass: "bg_white",
+          imgSrc: "/images/products/white-1.jpg",
+        },
+      ],
+      sizes: ["S", "M", "L", "XL"],
+      filterCategories: ["Best seller", "On Sale"],
+      brand: "Ecomus",
+      isAvailable: true,
+    }
+  ];
+
   const [cartProducts, setCartProducts] = useState([]);
-  const [wishList, setWishList] = useState([1, 2, 3]);
-  const [compareItem, setCompareItem] = useState([1, 2, 3]);
-  const [quickViewItem, setQuickViewItem] = useState(allProducts[0]);
+  const [wishList, setWishList] = useState([]);
+  const [compareItem, setCompareItem] = useState([]);
+
+  const [quickViewItem, setQuickViewItem] = useState([dummmyData]);
   const [quickAddItem, setQuickAddItem] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
+
   useEffect(() => {
     const subtotal = cartProducts.reduce((accumulator, product) => {
       return accumulator + product.quantity * product.price;
@@ -23,93 +54,96 @@ export default function Context({ children }) {
     setTotalPrice(subtotal);
   }, [cartProducts]);
 
-  const addProductToCart = (id, qty) => {
-    if (!cartProducts.filter((elm) => elm.id == id)[0]) {
-      const item = {
-        ...allProducts.filter((elm) => elm.id == id)[0],
-        quantity: qty ? qty : 1,
-      };
-      setCartProducts((pre) => [...pre, item]);
-      openCartModal();
-
-      // openCart();
+  const fetchProductById = async (id) => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/products/${id}`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error fetching product details", error);
+      return null;
     }
   };
-  const isAddedToCartProducts = (id) => {
-    if (cartProducts.filter((elm) => elm.id == id)[0]) {
-      return true;
+
+  const addProductToCart = async (id, qty) => {
+    if (!cartProducts.some((elm) => elm.id === id)) {
+      const product = await fetchProductById(id);
+      if (product) {
+        const item = { ...product, quantity: qty || 1 };
+        setCartProducts((prev) => [...prev, item]);
+        localStorage.setItem("cartList", JSON.stringify([...cartProducts, item]));
+        openCartModal();
+      }
     }
-    return false;
+  };
+
+  const isAddedToCartProducts = (id) => {
+    return cartProducts.some((elm) => elm._id === id);
   };
 
   const updateQuantity = (id, qty) => {
-    if (isAddedToCartProducts(id)) {
-      let item = cartProducts.filter((elm) => elm.id == id)[0];
-      let items = [...cartProducts];
-      const itemIndex = items.indexOf(item);
+    setCartProducts((prev) => {
+      const updatedCart = prev.map((item) =>
+        item.id === id ? { ...item, quantity: qty } : item
+      );
+      localStorage.setItem("cartList", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
+  };
 
-      item.quantity = qty / 1;
-      items[itemIndex] = item;
-      setCartProducts(items);
-
-      openCartModal();
-    } else {
-      addProductToCart(id, qty);
+  const addToWishlist = async (id) => {
+    if (!wishList.some((elm) => elm._id === id)) {
+      const product = await fetchProductById(id);
+      if (product) {
+        const item = { ...product};
+        setWishList((prev) => [...prev, item]);
+        localStorage.setItem("wishList", JSON.stringify([...wishList, item]));
+      }
     }
   };
-  const addToWishlist = (id) => {
-    if (!wishList.includes(id)) {
-      setWishList((pre) => [...pre, id]);
-    } else {
-      setWishList((pre) => [...pre].filter((elm) => elm != id));
-    }
-  };
+
   const removeFromWishlist = (id) => {
-    if (wishList.includes(id)) {
-      setWishList((pre) => [...pre.filter((elm) => elm != id)]);
-    }
+    setWishList((prev) => prev.filter((item) => item._id !== id));
+    localStorage.setItem("wishList", JSON.stringify(wishList));
   };
-  const addToCompareItem = (id) => {
-    if (!compareItem.includes(id)) {
-      setCompareItem((pre) => [...pre, id]);
-    }
-  };
-  const removeFromCompareItem = (id) => {
-    if (compareItem.includes(id)) {
-      setCompareItem((pre) => [...pre.filter((elm) => elm != id)]);
-    }
-  };
+
   const isAddedtoWishlist = (id) => {
-    if (wishList.includes(id)) {
-      return true;
-    }
-    return false;
+    return wishList.some((elm) => elm._id === id);
   };
-  const isAddedtoCompareItem = (id) => {
-    if (compareItem.includes(id)) {
-      return true;
-    }
-    return false;
+
+  const addToCompareItem = (id) => {
+    setCompareItem((prev) => {
+      const updatedCompare = prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id];
+      return updatedCompare;
+    });
   };
+
+  const removeFromCompareItem = (id) => {
+    setCompareItem((prev) => prev.filter((item) => item !== id));
+  };
+
+  const isAddedtoCompareItem = (id) => compareItem.includes(id);
+
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("cartList"));
-    if (items?.length) {
-      setCartProducts(items);
+    const cartItems = JSON.parse(localStorage.getItem("cartList"));
+    if (cartItems?.length) {
+      setCartProducts(cartItems);
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("cartList", JSON.stringify(cartProducts));
   }, [cartProducts]);
+
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("wishlist"));
-    if (items?.length) {
-      setWishList(items);
+    const wishlistItems = JSON.parse(localStorage.getItem("wishList"));
+    if (wishlistItems?.length) {
+      setWishList(wishlistItems);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishList));
+    localStorage.setItem("wishList", JSON.stringify(wishList));
   }, [wishList]);
 
   const contextElement = {
@@ -122,7 +156,6 @@ export default function Context({ children }) {
     addToWishlist,
     isAddedtoWishlist,
     quickViewItem,
-    wishList,
     setQuickViewItem,
     quickAddItem,
     setQuickAddItem,
@@ -133,9 +166,6 @@ export default function Context({ children }) {
     setCompareItem,
     updateQuantity,
   };
-  return (
-    <dataContext.Provider value={contextElement}>
-      {children}
-    </dataContext.Provider>
-  );
+
+  return <dataContext.Provider value={contextElement}>{children}</dataContext.Provider>;
 }
