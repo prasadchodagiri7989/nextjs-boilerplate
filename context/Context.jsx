@@ -72,7 +72,6 @@ export default function Context({ children }) {
         const item = { ...product, quantity: qty || 1 };
         setCartProducts((prev) => [...prev, item]);
         localStorage.setItem("cartList", JSON.stringify([...cartProducts, item]));
-        openCartModal();
       }
     }
   };
