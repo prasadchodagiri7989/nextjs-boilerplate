@@ -13,13 +13,14 @@ export default function Header2({
 }) {
   return (
     <header
+      style={{backgroundColor: "var(--main)"}}
       id="header"
       className={`header-default ${uppercase ? "header-uppercase" : ""}`}
     >
       <div className="px_15 lg-px_40">
         <div className="row wrapper-header align-items-center">
           <div className="col-md-4 col-3 tf-lg-hidden">
-            <a
+            <a 
               href="#mobileMenu"
               data-bs-toggle="offcanvas"
               aria-controls="offcanvasLeft"
@@ -60,6 +61,7 @@ export default function Header2({
             <ul className="nav-icon d-flex justify-content-end align-items-center gap-20">
               <li className="nav-search">
                 <a
+                  style={{ color: "var(--white)" }}
                   href="#canvasSearch"
                   data-bs-toggle="offcanvas"
                   aria-controls="offcanvasLeft"
@@ -70,6 +72,7 @@ export default function Header2({
               </li>
               <li className="nav-account">
                 <a
+                  style={{ color: "var(--white)" }}
                   href="#login"
                   data-bs-toggle="modal"
                   className="nav-icon-item"
@@ -78,7 +81,7 @@ export default function Header2({
                 </a>
               </li>
               <li className="nav-wishlist">
-                <Link href={`/wishlist`} className="nav-icon-item">
+                <Link href={`/wishlist`} className="nav-icon-item" style={{ color: "var(--white)" }}>
                   <i className="icon icon-heart" />
                   <span className={`count-box ${bgColor} ${textClass}`}>
                     <WishlistLength />
@@ -87,6 +90,7 @@ export default function Header2({
               </li>
               <li className="nav-cart">
                 <a
+                  style={{ color: "var(--white)" }}
                   href="#shoppingCart"
                   data-bs-toggle="modal"
                   className="nav-icon-item"

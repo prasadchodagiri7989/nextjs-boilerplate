@@ -62,66 +62,48 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
   return (
     <>
       {" "}
-      <li className="menu-item">
+      <li className="menu-item position-relative">
         <a
           href="#"
-          className={`item-link ${Linkfs} ${textColor} ${
-            isMenuActive(allHomepages) ? "" : ""
-          } `}
+          className={`item-link ${Linkfs} ${textColor}  ${
+            isMenuActive(blogLinks) ? "" : ""
+          }`}
+          style={{ color: "var(--white)" }}
         >
           Shop By Bike
           {isArrow ? <i className="icon icon-arrow-down" /> : ""}
         </a>
-        <div className="sub-menu mega-menu">
-          <div className="container">
-            <div className="row-demo">
-              {demoItems.map((item, index) => (
-                <div
-                  className={`demo-item ${
-                    isMenuActive(item) ? "" : ""
-                  } `}
-                  key={index}
-                >
-                  <Link href={item.href}>
-                    <div className="demo-image position-relative">
-                      <Image
-                        className="lazyload"
-                        data-src={item.src}
-                        alt={item.alt}
-                        src={item.src}
-                        width="300"
-                        height="329"
-                      />
-                      {item.labels && (
-                        <div className="demo-label">
-                          {item.labels.map((label, labelIndex) => (
-                            <span
-                              key={labelIndex}
-                              className={label.className || undefined}
-                            >
-                              {label.text}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                    <span className="demo-name">{item.name}</span>
+        <div className="sub-menu links-default">
+          <ul className="menu-list" style={{marginBottom: "20px"}}>
+            <li>
+              <select className="tf-select">
+                <option value="">Select Bike</option>
+                <option value="yamaha">Yamaha</option>
+                <option value="honda">Honda</option>
+                <option value="suzuki">Suzuki</option>
+                <option value="ktm">KTM</option>
+              </select>
+            </li>
+            <li>
+              <select className="tf-select">
+                <option value="">Select Model</option>
+                <option value="r15">R15</option>
+                <option value="cb350">CB350</option>
+                <option value="gixxer">Gixxer</option>
+                <option value="duke">Duke</option>
+              </select>
+            </li>
+          </ul>
+                  <Link
+                    href={`/shop-default`}
+                    className="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"
+                  >
+                    <span>Get</span>
+                    <i className="icon icon-arrow-right" />
                   </Link>
-                </div>
-              ))}
-            </div>
-            {/*<div className="text-center view-all-demo">
-              <a
-                href="#modalDemo"
-                data-bs-toggle="modal"
-                className="tf-btn btn-xl btn-fill radius-3 animate-hover-btn fw-6"
-              >
-                <span>View all demos (46+)</span>
-                <i className="icon icon-arrow-right" />
-              </a>
-            </div> */}
-          </div>
         </div>
+
+
       </li>
       <li className="menu-item">
         <a
@@ -129,6 +111,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
           className={`item-link ${Linkfs} ${textColor} ${
             isMenuActive(productsPages) ? "" : ""
           } `}
+          style={{ color: "var(--white)" }}
         >
           Motorcycles Accessories
           {isArrow ? <i className="icon icon-arrow-down" /> : ""}
@@ -167,6 +150,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
           className={`item-link ${Linkfs} ${textColor}  ${
             isMenuActive(productDetailPages) ? "" : ""
           }`}
+          style={{ color: "var(--white)" }}
         >
           Riding Gears
           {isArrow ? <i className="icon icon-arrow-down" /> : ""}
@@ -235,6 +219,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
           className={`item-link ${Linkfs} ${textColor}  ${
             isMenuActive(pages) ? "activeMenu" : ""
           }`}
+          style={{ color: "var(--white)" }}
         >
           Helmets
           <i className="icon icon-arrow-down" />
@@ -305,6 +290,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
           className={`item-link ${Linkfs} ${textColor}  ${
             isMenuActive(blogLinks) ? "" : ""
           }`}
+          style={{ color: "var(--white)" }}
         >
           Shop By Biker
           {isArrow ? <i className="icon icon-arrow-down" /> : ""}

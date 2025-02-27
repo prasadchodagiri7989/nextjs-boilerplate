@@ -661,12 +661,13 @@ export const pages = [
 
 
 export const blogLinks = [
-  { href: "/blog-grid", text: "Grid layout" },
-  { href: "/blog-sidebar-left", text: "Left sidebar" },
-  { href: "/blog-sidebar-right", text: "Right sidebar" },
-  { href: "/blog-list", text: "Blog list" },
-  { href: "/blog-detail/1", text: "Single Post" },
+  { href: "/bikes", text: "All Bikes" },
+  { href: "/gear", text: "Riding Gear" },
+  { href: "/accessories", text: "Accessories" },
+  { href: "/parts", text: "Bike Parts" },
+  { href: "/service", text: "Service & Maintenance" },
 ];
+
 
 export const navItems = [
   {
