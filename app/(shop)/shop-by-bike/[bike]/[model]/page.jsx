@@ -1,13 +1,13 @@
 import Footer1 from "@/components/footers/Footer1";
 import Header2 from "@/components/headers/Header2";
-import AllProduct from "@/components/shop/AllProducts";
+import ShopByBike from "@/components/shop/ShopByBike";
 import React from "react";
 
 export const metadata = {
   title: "Product Default || BikersHub",
   description: "Ecomus",
 };
-export default function page() {
+export default function page({ params }) {
   return (
     <>
       <Header2 />
@@ -19,7 +19,7 @@ export default function page() {
           </p>
         </div>
       </div>
-      <AllProduct />
+      <ShopByBike params={params} />
       <Footer1 />
     </>
   );

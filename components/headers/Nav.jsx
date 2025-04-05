@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-
+import { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { products1 } from "@/data/products";
@@ -17,7 +17,17 @@ import {
 } from "@/data/menu";
 import { usePathname } from "next/navigation";
 
+const bikeModels = {
+  yamaha: ["R15", "FZ", "MT15"],
+  honda: ["CB350", "Unicorn", "Hornet"],
+  suzuki: ["Gixxer", "Access", "Burgman"],
+  ktm: ["Duke", "RC", "Adventure"]
+};
+
+
 export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
+  const [selectedBike, setSelectedBike] = useState("");
+  const [selectedModel, setSelectedModel] = useState("");
   const pathname = usePathname();
   const isMenuActive = (menuItem) => {
     let active = false;
@@ -63,48 +73,64 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
     <>
       {" "}
       <li className="menu-item position-relative">
-        <a
-          href="#"
-          className={`item-link ${Linkfs} ${textColor}  ${
-            isMenuActive(blogLinks) ? "" : ""
-          }`}
-          style={{ color: "var(--white)" }}
-        >
-          Shop By Bike
-          {isArrow ? <i className="icon icon-arrow-down" /> : ""}
-        </a>
-        <div className="sub-menu links-default">
-          <ul className="menu-list" style={{marginBottom: "20px"}}>
-            <li>
-              <select className="tf-select">
-                <option value="">Select Bike</option>
-                <option value="yamaha">Yamaha</option>
-                <option value="honda">Honda</option>
-                <option value="suzuki">Suzuki</option>
-                <option value="ktm">KTM</option>
-              </select>
-            </li>
-            <li>
-              <select className="tf-select">
-                <option value="">Select Model</option>
-                <option value="r15">R15</option>
-                <option value="cb350">CB350</option>
-                <option value="gixxer">Gixxer</option>
-                <option value="duke">Duke</option>
-              </select>
-            </li>
-          </ul>
-                  <Link
-                    href={`/shop-default`}
-                    className="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"
-                  >
-                    <span>Get</span>
-                    <i className="icon icon-arrow-right" />
-                  </Link>
-        </div>
+      <a
+        href="#"
+        className={`item-link ${Linkfs} ${textColor}`}
+        style={{ color: "var(--white)" }}
+      >
+        Shop By Bike
+        {isArrow ? <i className="icon icon-arrow-down" /> : ""}
+      </a>
 
+      <div className="sub-menu links-default">
+        <ul className="menu-list" style={{ marginBottom: "20px" }}>
+          <li>
+            <select
+              className="tf-select"
+              value={selectedBike}
+              onChange={(e) => {
+                setSelectedBike(e.target.value);
+                setSelectedModel(""); // Reset model on bike change
+              }}
+            >
+              <option value="">Select Bike</option>
+              {Object.keys(bikeModels).map((bike) => (
+                <option key={bike} value={bike}>
+                  {bike.charAt(0).toUpperCase() + bike.slice(1)}
+                </option>
+              ))}
+            </select>
+          </li>
+          <li>
+            <select
+              className="tf-select"
+              value={selectedModel}
+              onChange={(e) => setSelectedModel(e.target.value)}
+              disabled={!selectedBike}
+            >
+              <option value="">Select Model</option>
+              {selectedBike &&
+                bikeModels[selectedBike].map((model) => (
+                  <option key={model} value={model.toLowerCase()}>
+                    {model}
+                  </option>
+                ))}
+            </select>
+          </li>
+        </ul>
 
-      </li>
+        {/* Show button only when both bike and model are selected */}
+        {selectedBike && selectedModel && (
+          <Link
+            href={`/shop-by-bike/${selectedBike}/${selectedModel}`}
+            className="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3"
+          >
+            <span>Get</span>
+            <i className="icon icon-arrow-right" />
+          </Link>
+        )}
+      </div>
+    </li>
       <li className="menu-item">
         <a
           href="#"
