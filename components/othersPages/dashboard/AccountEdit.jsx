@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useSession, signIn } from "next-auth/react";
+import { useAuth } from "@/context/AuthContext";
 
 export default function AccountEdit() {
-  const { data: session, update } = useSession();
-  const user = session?.user;
+  const { user, setUser } = useAuth();
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -18,9 +17,9 @@ export default function AccountEdit() {
   useEffect(() => {
     if (user) {
       setFormData({
-        firstName: user?.name?.split(" ")[0] || "",
-        lastName: user?.name?.split(" ")[1] || "",
-        email: user?.email || "",
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        email: user.email || "",
         currentPassword: "",
         newPassword: "",
         confirmPassword: "",
@@ -36,12 +35,13 @@ export default function AccountEdit() {
     e.preventDefault();
 
     try {
-      // 🔹 Send update request to backend
+      const token = localStorage.getItem("token");
+
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${session?.accessToken}`, // Include auth token
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           id: user.id,
@@ -55,14 +55,19 @@ export default function AccountEdit() {
 
       const updatedUser = await res.json();
 
-      // 🔹 Update session with new user data
-      await update({
-        ...session,
-        user: {
-          ...session.user,
-          name: updatedUser.name,
-        },
-      });
+      // Save new user data
+      const [firstName, ...lastNameParts] = updatedUser.name.split(" ");
+      const lastName = lastNameParts.join(" ");
+
+      const newUser = {
+        ...user,
+        name: updatedUser.name,
+        firstName,
+        lastName,
+      };
+
+      setUser(newUser);
+      localStorage.setItem("user", JSON.stringify(newUser));
 
       alert("Profile updated successfully!");
     } catch (error) {
@@ -105,8 +110,6 @@ export default function AccountEdit() {
             type="email"
             name="email"
             value={formData.email}
-            onChange={handleChange}
-            required
             disabled
           />
           <label className="tf-field-label">Email</label>
