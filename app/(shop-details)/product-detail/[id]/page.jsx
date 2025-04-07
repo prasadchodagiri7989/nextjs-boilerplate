@@ -51,7 +51,7 @@ export default async function Page({ params }) {
               </Link>
               <i className="icon icon-arrow-right" />
               <span className="text">
-                {product.title ? product.title : "Cotton jersey top"}
+                {product.name ? product.name : "Cotton jersey top"}
               </span>
             </div>
             <ProductSinglePrevNext currentId={product.id} />

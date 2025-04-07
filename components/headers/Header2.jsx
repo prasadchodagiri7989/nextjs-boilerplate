@@ -1,9 +1,12 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
 import Nav from "./Nav";
 import Image from "next/image";
 import Link from "next/link";
 import CartLength from "../common/CartLength";
 import WishlistLength from "../common/WishlistLength";
+import { useAuth } from "@/context/AuthContext"; // adjust path if needed
+
 export default function Header2({
   textClass,
   bgColor = "",
@@ -11,19 +14,22 @@ export default function Header2({
   isArrow = true,
   Linkfs = "",
 }) {
+  const { user, logout } = useAuth();
+
   return (
     <header
-      style={{backgroundColor: "var(--main)"}}
+      style={{ backgroundColor: "var(--main)" }}
       id="header"
       className={`header-default ${uppercase ? "header-uppercase" : ""}`}
     >
       <div className="px_15 lg-px_40">
         <div className="row wrapper-header align-items-center">
           <div className="col-md-4 col-3 tf-lg-hidden">
-            <a 
+            <a
               href="#mobileMenu"
               data-bs-toggle="offcanvas"
               aria-controls="offcanvasLeft"
+              style={{color:'white'}}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -39,6 +45,7 @@ export default function Header2({
               </svg>
             </a>
           </div>
+
           <div className="col-xl-3 col-md-4 col-6">
             <Link href={`/`} className="logo-header">
               <Image
@@ -50,6 +57,7 @@ export default function Header2({
               />
             </Link>
           </div>
+
           <div className="col-xl-6 tf-md-hidden">
             <nav className="box-navigation text-center">
               <ul className="box-nav-ul d-flex align-items-center justify-content-center gap-30">
@@ -57,6 +65,7 @@ export default function Header2({
               </ul>
             </nav>
           </div>
+
           <div className="col-xl-3 col-md-4 col-3">
             <ul className="nav-icon d-flex justify-content-end align-items-center gap-20">
               <li className="nav-search">
@@ -70,16 +79,19 @@ export default function Header2({
                   <i className="icon icon-search" />
                 </a>
               </li>
+
               <li className="nav-account">
-                <a
-                  style={{ color: "var(--white)" }}
-                  href="#login"
-                  data-bs-toggle="modal"
-                  className="nav-icon-item"
-                >
-                  <i className="icon icon-account" />
-                </a>
+                {user ? (
+                  <Link href="/my-account" className="nav-icon-item" style={{ color: "var(--white)" }}>
+                    <i className="icon icon-account" />
+                  </Link>
+                ) : (
+                  <Link href="/login" className="nav-icon-item" style={{ color: "var(--white)" }}>
+                    <i className="icon icon-account" />
+                  </Link>
+                )}
               </li>
+
               <li className="nav-wishlist">
                 <Link href={`/wishlist`} className="nav-icon-item" style={{ color: "var(--white)" }}>
                   <i className="icon icon-heart" />
@@ -88,6 +100,7 @@ export default function Header2({
                   </span>
                 </Link>
               </li>
+
               <li className="nav-cart">
                 <a
                   style={{ color: "var(--white)" }}

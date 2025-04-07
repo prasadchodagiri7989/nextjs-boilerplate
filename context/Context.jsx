@@ -1,6 +1,7 @@
 "use client";
 import { openCartModal } from "@/utlis/openCartModal";
 import React, { useEffect, useContext, useState } from "react";
+
 const dataContext = React.createContext();
 export const useContextElement = () => {
   return useContext(dataContext);

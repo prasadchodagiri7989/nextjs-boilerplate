@@ -10,20 +10,19 @@ export const authOptions = {
         email: { label: "Email", type: "email", placeholder: "abc@xyz.com" },
         password: { label: "Password", type: "password" },
       },
-      async author5ize(credentials) {
-        // 🔹 Call backend API for authentication
+      async authorize(credentials) {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(credentials),
         });
-
+    
         const user = await res.json();
         if (!res.ok || !user) throw new Error("Invalid email or password");
-
+    
         return user;
       },
-    }),
+    })    
   ],
   callbacks: {  
     async jwt({ token, user }) {

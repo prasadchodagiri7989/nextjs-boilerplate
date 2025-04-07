@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext"; // make sure path is correct
+
 const accountLinks = [
   { href: "/my-account", label: "Dashboard" },
   { href: "/my-account-orders", label: "Orders" },
@@ -11,6 +13,14 @@ const accountLinks = [
 
 export default function DashboardNav() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();                // clears localStorage and sets user to null
+    router.push("/login");   // redirect to login page
+  };
+
   return (
     <ul className="my-account-nav">
       {accountLinks.map((link, index) => (
@@ -18,7 +28,7 @@ export default function DashboardNav() {
           <Link
             href={link.href}
             className={`my-account-nav-item ${
-              pathname == link.href ? "active" : ""
+              pathname === link.href ? "active" : ""
             }`}
           >
             {link.label}
@@ -26,9 +36,9 @@ export default function DashboardNav() {
         </li>
       ))}
       <li>
-        <Link href={`/login`} className="my-account-nav-item">
+        <button onClick={handleLogout} className="my-account-nav-item logout-btn">
           Logout
-        </Link>
+        </button>
       </li>
     </ul>
   );

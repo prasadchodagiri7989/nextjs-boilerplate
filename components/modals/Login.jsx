@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { signIn } from "next-auth/react";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -15,23 +15,54 @@ export default function Login() {
     e.preventDefault();
     setError("");
     setLoading(true);
-
+  
     try {
-      const res = await signIn("credentials", {
-        redirect: false,
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, {
         email,
         password,
       });
-
-      if (res.error) throw new Error(res.error);
-
-      router.push("/");
-    } catch (error) {
-      setError(error.message);
+  
+      const { token, user } = res.data;
+  
+      if (token && user?.id && user?.name) {
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify({ id: user.id, name: user.name }));
+  
+        // ✅ Close modal
+        const modalEl = document.getElementById("login");
+        if (modalEl) {
+          try {
+            let ModalConstructor =
+              typeof bootstrap !== "undefined"
+                ? bootstrap.Modal
+                : window?.bootstrap?.Modal;
+  
+            if (ModalConstructor) {
+              const modalInstance = ModalConstructor.getInstance(modalEl) || new ModalConstructor(modalEl);
+              modalInstance.hide();
+            } else {
+              console.warn("Bootstrap Modal not found.");
+            }
+          } catch (modalErr) {
+            console.error("Failed to close modal:", modalErr);
+          }
+        }
+  
+        router.push("/");
+      } else {
+        throw new Error("Invalid response from server.");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError(err.response?.data?.error || "Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
+  
+  
+  
+  
 
   return (
     <div className="modal modalCentered fade form-sign-in modal-part-content" id="login">
@@ -72,13 +103,14 @@ export default function Login() {
                 </button>
               </div>
             </form>
-        <div className="tf-login-content">
-            <h5 className="" style={{marginTop: "20px"}}>I'm new here</h5>
-            <Link href={`/register`} className="tf-btn btn-line">
-              Register
-              <i className="icon icon-arrow1-top-left" />
-            </Link>
-          </div>
+
+            <div className="tf-login-content">
+              <h5 className="" style={{ marginTop: "20px" }}>I'm new here</h5>
+              <Link href={`/register`} className="tf-btn btn-line">
+                Register
+                <i className="icon icon-arrow1-top-left" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
