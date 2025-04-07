@@ -2,6 +2,7 @@ import Footer1 from "@/components/footers/Footer1";
 import Header2 from "@/components/headers/Header2";
 import AllProduct from "@/components/shop/AllProducts";
 import React from "react";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Product Default || BikersHub",
@@ -9,6 +10,7 @@ export const metadata = {
 };
 export default function page() {
   return (
+    <Suspense fallback={<div>Loading shop...</div>}>
     <>
       <Header2 />
       <div className="tf-page-title">
@@ -22,5 +24,6 @@ export default function page() {
       <AllProduct />
       <Footer1 />
     </>
+    </Suspense>
   );
 }

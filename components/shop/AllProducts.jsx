@@ -7,6 +7,7 @@ import ShopFilter from "./ShopFilter";
 import Sorting from "./Sorting";
 import { useSearchParams } from "next/navigation";
 
+
 export default function AllProduct({ collectionId }) {
   const [gridItems, setGridItems] = useState(4);
   const [products, setProducts] = useState([]); // Stores fetched products
