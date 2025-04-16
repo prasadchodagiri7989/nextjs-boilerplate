@@ -35,7 +35,7 @@ const availabilities = [
 const sizes = ["S", "M", "L", "XL"];
 
 export default function ShopFilter({ setFilteredProducts, products }) {
-  const [price, setPrice] = useState([1000, 200000]);
+  const [price, setPrice] = useState([10, 200000]);
   const [selectedColors, setSelectedColors] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedAvailabilities, setSelectedAvailabilities] = useState([]);
