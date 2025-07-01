@@ -25,7 +25,7 @@ export default function ShopByBike({ params }) {
     try {
       setLoading(true);
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/products/by-bike?bike=${bike}&model=${model}`
+        `${process.env.NEXT_PUBLIC_API_URL}/products/by-bike?brand=${bike}&model=${model}`
       );
       if (!res.ok) throw new Error("Failed to fetch products");
       const data = await res.json();

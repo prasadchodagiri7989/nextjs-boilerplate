@@ -18,11 +18,110 @@ import {
 import { usePathname } from "next/navigation";
 
 const bikeModels = {
-  yamaha: ["R15", "FZ", "MT15"],
-  honda: ["CB350", "Unicorn", "Hornet"],
-  suzuki: ["Gixxer", "Access", "Burgman"],
-  ktm: ["Duke", "RC", "Adventure"]
+  BMW: [
+    "G 310 R",
+    "GS 310G"
+  ],
+  BSA: [
+    "Goldstar 650"
+  ],
+  BAJAJ: [
+    "Dominar 250/400(2017-2022)",
+    "Dominar 250/400(2019-2021)",
+    "Dominar 250/400(2019-2022)",
+    "Dominar 400 (2017-2018)",
+    "Dominar 400(2019-2021)",
+    "Pulsar NS200",
+    "Pulsar NS400Z"
+  ],
+  "HARLEY DAVIDSON": [
+    "Harley X440"
+  ],
+  HERO: [
+    "XPulse 200"
+  ],
+  HONDA: [
+    "CB200X",
+    "CB300F",
+    "CB300R",
+    "CB350",
+    "CB350 RS",
+    "NX500"
+  ],
+  KTM: [
+    "ADVENTURE 250/390",
+    "ADVENTURE 250/390/390X",
+    "ADVENTURE 250/390/390X/390",
+    "ADVENTURE 250/390/390X/390Rally",
+    "ADVENTURE 390",
+    "ADVENTURE 390(2025)",
+    "ADVENTURE 390/390X",
+    "DUKE 250/390(2017-18)",
+    "Duke 125 (2020-22)",
+    "Duke 200 BS6(2021-22)",
+    "Duke 250/390 Gen 3",
+    "Duke 250/390(2019-2022)",
+    "Duke 390/250/200/3+D572+D568+D568:D582",
+    "Duke 390/250/200/390 GEN 3",
+    "Duke 390/250/200/390 Gen 3",
+    "Duke 390/250/390 GEN 3",
+    "RC 200/390"
+  ],
+  HUSQVARNA: [
+    "Svartpilen and Vitpilen"
+  ],
+  KAWASAKI: [
+    "Ninja 300",
+    "Versys 650",
+    "Vulcan 650"
+  ],
+  "ROYAL ENFIELD": [
+    "Bear 650",
+    "Classic 350 Reborn",
+    "Continental GT 650/ Interceptor",
+    "Guerrilla 450",
+    "Himalayan 411 (2016-2020)",
+    "Himalayan 411 BS6(2021-23)",
+    "Himalayan 450",
+    "Hunter 350",
+    "Meteor 350",
+    "Scram 411",
+    "Shotgun 650",
+    "Super Meteor 650"
+  ],
+  "ROYAK ENFIELD": [
+    "Guerrilla 450"
+  ],
+  SUZUKI: [
+    "V Strom SX 250",
+    "V-STROM 250",
+    "V-STROM 251",
+    "V-STROM 252",
+    "V-STROM 253",
+    "V-STROM 254",
+    "V-STROM 255",
+    "V-STROM 256",
+    "V-STROM 257"
+  ],
+  Suzuki: [
+    "V-Storm 250"
+  ],
+  TRIUMPH: [
+    "Scrambler 400",
+    "Scrambler 400 X",
+    "Speed 400"
+  ],
+  YAMAHA: [
+    "FZ 25",
+    "MT 15"
+  ],
+  YEZDI: [
+    "Yezdi Adventure",
+    "Yezdi Scrambler"
+  ]
 };
+
+
 
 
 export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
@@ -72,7 +171,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
   return (
     <>
       {" "}
-      <li className="menu-item position-relative">
+      <li className="menu-item position-relative">  
       <a
         href="#"
         className={`item-link ${Linkfs} ${textColor}`}

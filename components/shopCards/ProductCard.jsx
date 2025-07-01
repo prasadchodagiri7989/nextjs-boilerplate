@@ -28,7 +28,7 @@ export const ProductCard = ({ product, br='0px' }) => {
 
   return (
     <div className="card-product fl-item" key={productId} style={{border: `1px solid var(--line)`, borderRadius: "10px", padding : "20px"}}>
-      <div className="card-product-wrapper" style={{padding: "20px"}}>
+      <div className="card-product-wrapper">
         <Link href={`/product-detail/${productId}`} className="product-img">
         <Image
           style={{borderRadius: "10px"}}
