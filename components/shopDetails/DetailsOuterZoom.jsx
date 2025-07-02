@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import Image from "next/image";
 import CountdownComponent from "../common/Countdown";
@@ -16,6 +16,7 @@ import { useContextElement } from "@/context/Context";
 import { openCartModal } from "@/utlis/openCartModal";
 
 export default function DetailsOuterZoom({ product }) {
+  const [loading, setLoading] = useState(false);
 
   const productId = product._id; 
   const productName = product.name; 
@@ -36,6 +37,76 @@ export default function DetailsOuterZoom({ product }) {
     }
   };
 
+  useEffect(() => {
+  const script = document.createElement('script');
+  script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+  script.async = true;
+  document.body.appendChild(script);
+}, []);
+
+const handleRazorpayPayment = async () => {
+  setLoading(true); // Start loader
+  try {
+    const res = await fetch('/api/razorpay', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ amount: productPrice * quantity }),
+    });
+
+    const data = await res.json();
+
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+      amount: data.amount,
+      currency: data.currency,
+      name: 'Bikers Hub',
+      description: `Payment for ${productName}`,
+      image: '/logo.png',
+      order_id: data.id,
+      handler: function (response) {
+        setLoading(false); // Hide loader when modal closes
+        const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
+
+        const query = new URLSearchParams({
+          paymentId: razorpay_payment_id,
+          orderId: razorpay_order_id,
+          signature: razorpay_signature,
+          amount: (productPrice * quantity).toString(),
+        }).toString();
+
+        window.location.href = `/payment-confirmation?${query}`;
+      },
+      prefill: {
+        name: 'Customer Name',
+        email: 'customer@example.com',
+        contact: '9999999999',
+      },
+      notes: {
+        product_id: productId,
+      },
+      theme: {
+        color: '#3399cc',
+      },
+      modal: {
+        ondismiss: function () {
+          setLoading(false); // Hide loader if user closes modal
+        }
+      }
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  } catch (error) {
+    console.error('Razorpay Error:', error);
+    setLoading(false); // Hide loader on error
+    alert('Something went wrong');
+  }
+};
+
+
+
   const {
     addProductToCart,
     isAddedToCartProducts,
@@ -49,6 +120,12 @@ export default function DetailsOuterZoom({ product }) {
       className="flat-spacing-4 pt_0"
       style={{ maxWidth: "100vw", overflow: "clip" }}
     >
+      {loading && (
+        <div className="razorpay-loader-overlay">
+          <div className="spinner" />
+        </div>
+      )}
+
       <div
         className="tf-main-product section-image-zoom"
         style={{ maxWidth: "100vw", overflow: "clip" }}
@@ -174,7 +251,7 @@ export default function DetailsOuterZoom({ product }) {
                         <span className="icon icon-check" />
                       </a>
                       <div className="w-100">
-                        <a href="#" className="btns-full">
+                        <a onClick={handleRazorpayPayment} className="btns-full" style={{ cursor: 'pointer' }}>
                           Buy with
                           <Image
                             alt="image"
@@ -286,6 +363,38 @@ export default function DetailsOuterZoom({ product }) {
         </div>
       </div>{" "}
       <StickyItem />
+      <style jsx>{`
+
+        .razorpay-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  border: 6px solid #eee;
+  border-top: 6px solid #3399cc;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+      `}</style>
     </section>
   );
 }
