@@ -10,6 +10,7 @@ export const metadata = {
 };
 export default function page() {
   return (
+    <Suspense fallback={<div>Loading shop...</div>}>
     <>
       <Header2 />
       <div className="tf-page-title">
@@ -23,5 +24,6 @@ export default function page() {
       <AllProduct />
       <Footer1 />
     </>
+    </Suspense>
   );
 }
