@@ -1,85 +1,160 @@
 "use client";
 import { useEffect, useState } from "react";
 import Slider from "rc-slider";
-import Link from "next/link";
 
-const categories = [
-  { id: 1, name: "Fashion", isActive: true, link: "/shop-default" },
-  { id: 2, name: "Men", isActive: false, link: "/shop-men" },
-  { id: 3, name: "Women", isActive: false, link: "/shop-women" },
-  { id: 4, name: "Denim", isActive: false, link: "/shop-default" },
-  { id: 5, name: "Dress", isActive: false, link: "/shop-default" },
-];
+const bikeModels = {
+  BMW: [
+    "G 310 R",
+    "GS 310G"
+  ],
+  BSA: [
+    "Goldstar 650"
+  ],
+  BAJAJ: [
+    "Dominar 250/400(2017-2022)",
+    "Dominar 250/400(2019-2021)",
+    "Dominar 250/400(2019-2022)",
+    "Dominar 400 (2017-2018)",
+    "Dominar 400(2019-2021)",
+    "Pulsar NS200",
+    "Pulsar NS400Z"
+  ],
+  "HARLEY DAVIDSON": [
+    "Harley X440"
+  ],
+  HERO: [
+    "XPulse 200"
+  ],
+  HONDA: [
+    "CB200X",
+    "CB300F",
+    "CB300R",
+    "CB350",
+    "CB350 RS",
+    "NX500"
+  ],
+  KTM: [
+    "ADVENTURE 250/390",
+    "ADVENTURE 250/390/390X",
+    "ADVENTURE 250/390/390X/390",
+    "ADVENTURE 250/390/390X/390Rally",
+    "ADVENTURE 390",
+    "ADVENTURE 390(2025)",
+    "ADVENTURE 390/390X",
+    "DUKE 250/390(2017-18)",
+    "Duke 125 (2020-22)",
+    "Duke 200 BS6(2021-22)",
+    "Duke 250/390 Gen 3",
+    "Duke 250/390(2019-2022)",
+    "Duke 390/250/200/3+D572+D568+D568:D582",
+    "Duke 390/250/200/390 GEN 3",
+    "Duke 390/250/200/390 Gen 3",
+    "Duke 390/250/390 GEN 3",
+    "RC 200/390"
+  ],
+  HUSQVARNA: [
+    "Svartpilen and Vitpilen"
+  ],
+  KAWASAKI: [
+    "Ninja 300",
+    "Versys 650",
+    "Vulcan 650"
+  ],
+  "ROYAL ENFIELD": [
+    "Bear 650",
+    "Classic 350 Reborn",
+    "Continental GT 650/ Interceptor",
+    "Guerrilla 450",
+    "Himalayan 411 (2016-2020)",
+    "Himalayan 411 BS6(2021-23)",
+    "Himalayan 450",
+    "Hunter 350",
+    "Meteor 350",
+    "Scram 411",
+    "Shotgun 650",
+    "Super Meteor 650"
+  ],
+  "ROYAK ENFIELD": [
+    "Guerrilla 450"
+  ],
+  SUZUKI: [
+    "V Strom SX 250",
+    "V-STROM 250",
+    "V-STROM 251",
+    "V-STROM 252",
+    "V-STROM 253",
+    "V-STROM 254",
+    "V-STROM 255",
+    "V-STROM 256",
+    "V-STROM 257"
+  ],
+  Suzuki: [
+    "V-Storm 250"
+  ],
+  TRIUMPH: [
+    "Scrambler 400",
+    "Scrambler 400 X",
+    "Speed 400"
+  ],
+  YAMAHA: [
+    "FZ 25",
+    "MT 15"
+  ],
+  YEZDI: [
+    "Yezdi Adventure",
+    "Yezdi Scrambler"
+  ]
+};
 
-const filterColors = [
-  { name: "Orange", colorClass: "bg_orange-3" },
-  { name: "Black", colorClass: "bg_dark" },
-  { name: "White", colorClass: "bg_white" },
-  { name: "Brown", colorClass: "bg_brown" },
-  { name: "Light Purple", colorClass: "bg_purple" },
-  { name: "Light Green", colorClass: "bg_light-green" },
-  { name: "Pink", colorClass: "bg_purple" },
-  { name: "Blue", colorClass: "bg_blue-2" },
-  { name: "Dark Blue", colorClass: "bg_dark-blue" },
-  { name: "Light Grey", colorClass: "bg_light-grey" },
-  { name: "Beige", colorClass: "bg_beige" },
-  { name: "Light Blue", colorClass: "bg_light-blue" },
-  { name: "Grey", colorClass: "bg_grey" },
-  { name: "Light Pink", colorClass: "bg_light-pink" },
-];
-const brands = ["Ecomus", "M&H"];
-const availabilities = [
-  { id: 1, isAvailable: true, text: "Available", count: 14 },
-  { id: 2, isAvailable: false, text: "Out of Stock", count: 2 },
-];
-const sizes = ["S", "M", "L", "XL"];
+const brands = Object.keys(bikeModels);
 
 export default function ShopFilter({ setFilteredProducts, products }) {
-  const [price, setPrice] = useState([10, 200000]);
-  const [selectedColors, setSelectedColors] = useState([]);
+  const [price, setPrice] = useState([1000, 200000]);
   const [selectedBrands, setSelectedBrands] = useState([]);
-  const [selectedAvailabilities, setSelectedAvailabilities] = useState([]);
-  const [selectedSizes, setSelectedSizes] = useState([]);
+  const [selectedModels, setSelectedModels] = useState([]);
+  const [selectedAvailability, setSelectedAvailability] = useState([]);
 
-  const handlePrice = (value) => {
-    setPrice(value); // Update the price state
+  const handlePrice = (value) => setPrice(value);
+
+  const handleSelectBrand = (brand) => {
+    setSelectedBrands((prev) =>
+      prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
+    );
+    setSelectedModels([]); // Reset models when brand changes
   };
 
-  useEffect(() => {
-    let filtered = products.filter(
-      (product) =>
-        product.price >= price[0] &&
-        product.price <= price[1] &&
-        (selectedColors.length === 0 ||
-          selectedColors.some((color) =>
-            product.colors?.map((c) => c.name).includes(color)
-          )) &&
-        (selectedBrands.length === 0 || selectedBrands.includes(product.brand)) &&
-        (selectedSizes.length === 0 || selectedSizes.some((size) => product.sizes?.includes(size))) &&
-        (selectedAvailabilities.length === 0 ||
-          selectedAvailabilities.some(
-            (avail) => avail.isAvailable === product.isAvailable
-          ))
+  const handleSelectModel = (model) => {
+    setSelectedModels((prev) =>
+      prev.includes(model) ? prev.filter((m) => m !== model) : [...prev, model]
     );
+  };
 
-    setFilteredProducts(filtered);
-  }, [
-    price,
-    selectedColors,
-    selectedBrands,
-    selectedAvailabilities,
-    selectedSizes,
-    products,
-  ]);
+  const handleSelectAvailability = (value) => {
+    setSelectedAvailability((prev) =>
+      prev.includes(value) ? prev.filter((a) => a !== value) : [...prev, value]
+    );
+  };
 
   const clearFilter = () => {
-    setSelectedColors([]);
     setSelectedBrands([]);
-    setSelectedAvailabilities([]);
-    setSelectedSizes([]);
+    setSelectedModels([]);
+    setSelectedAvailability([]);
     setPrice([1000, 200000]);
     setFilteredProducts(products);
   };
+
+  useEffect(() => {
+    const filtered = products.filter((product) => {
+      return (
+        product.price >= price[0] &&
+        product.price <= price[1] &&
+        (selectedBrands.length === 0 || selectedBrands.includes(product.brand)) &&
+        (selectedModels.length === 0 || selectedModels.includes(product.model)) &&
+        (selectedAvailability.length === 0 || selectedAvailability.includes(product.stock > 0))
+      );
+    });
+    setFilteredProducts(filtered);
+  }, [price, selectedBrands, selectedModels, selectedAvailability, products]);
 
   return (
     <div className="offcanvas offcanvas-start canvas-filter" id="filterShop">
@@ -96,254 +171,85 @@ export default function ShopFilter({ setFilteredProducts, products }) {
           />
         </header>
         <div className="canvas-body">
-          <div className="widget-facet wd-categories">
-            <div
-              className="facet-title"
-              data-bs-target="#categories"
-              data-bs-toggle="collapse"
-              aria-expanded="true"
-              aria-controls="categories"
-            >
-              <span>Product categories</span>
-              <span className="icon icon-arrow-up" />
+          <form onSubmit={(e) => e.preventDefault()} className="facet-filter-form">
+            <div className="widget-facet">
+              <h6 className="facet-title">Price</h6>
+              <Slider
+                range
+                min={100}
+                max={200000}
+                defaultValue={price}
+                onChange={handlePrice}
+              />
+              <p className="caption-price">
+                Rs.{price[0]} - Rs.{price[1]}
+              </p>
             </div>
-            <div id="categories" className="collapse show">
-              <ul className="list-categoris current-scrollbar mb_36">
-                {categories.map((category) => (
-                  <li key={category.id} className={`cate-item`}>
-                    {category.link ? (
-                      <Link href={category.link}>
-                        <span>{category.name}</span>
-                      </Link>
-                    ) : (
-                      <a href="#">
-                        <span>{category.name}</span>
-                      </a>
-                    )}
+
+            <div className="widget-facet">
+              <h6 className="facet-title">Brand</h6>
+              <ul className="tf-filter-group current-scrollbar mb_36">
+                {brands.map((brand) => (
+                  <li key={brand} onClick={() => handleSelectBrand(brand)}>
+                    <input
+                      type="checkbox"
+                      checked={selectedBrands.includes(brand)}
+                      readOnly
+                    />
+                    <label>{brand}</label>
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            action="#"
-            id="facet-filter-form"
-            className="facet-filter-form"
-          >
-            <div className="widget-facet">
-              <div
-                className="facet-title"
-                data-bs-target="#availability"
-                data-bs-toggle="collapse"
-                aria-expanded="true"
-                aria-controls="availability"
-              >
-                <span>Availability</span>
-                <span className="icon icon-arrow-up" />
-              </div>
-              <div id="availability" className="collapse show">
+
+            {selectedBrands.length === 1 && (
+              <div className="widget-facet">
+                <h6 className="facet-title">Model</h6>
                 <ul className="tf-filter-group current-scrollbar mb_36">
-                  {availabilities.map((availability) => (
-                    <li
-                      key={availability.id}
-                      className="list-item d-flex gap-12 align-items-center"
-                      onClick={() => handleSelectAvailabilities(availability)}
-                    >
-                      <input
-                        type="radio"
-                        className="tf-check"
-                        readOnly
-                        checked={selectedAvailabilities.includes(availability)}
-                      />
-                      <label className="label">
-                        <span>{availability.text}</span>&nbsp;
-                        <span>
-                          (
-                          {
-                            products.filter(
-                              (elm) =>
-                                elm.isAvailable == availability.isAvailable
-                            ).length
-                          }
-                          )
-                        </span>
-                      </label>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="widget-facet wrap-price">
-              <div
-                className="facet-title"
-                data-bs-target="#price"
-                data-bs-toggle="collapse"
-                aria-expanded="true"
-                aria-controls="price"
-              >
-                <span>Price</span>
-                <span className="icon icon-arrow-up" />
-              </div>
-              <div id="price" className="collapse show">
-                <div className="widget-price filter-price">
-                  <Slider
-                    formatLabel={() => ``}
-                    range
-                    max={200000}
-                    min={100}
-                    defaultValue={price}
-                    onChange={(value) => handlePrice(value)}
-                    id="slider"
-                  />
-                  <div className="box-title-price">
-                    <span className="title-price">Price :</span>
-                    <div className="caption-price">
-                      <div>
-                        <span>$</span>
-                        <span className="min-price">{price[0]}</span>
-                      </div>
-                      <span>-</span>
-                      <div>
-                        <span>$</span>
-                        <span className="max-price">{price[1]}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="widget-facet">
-              <div
-                className="facet-title"
-                data-bs-target="#brand"
-                data-bs-toggle="collapse"
-                aria-expanded="true"
-                aria-controls="brand"
-              >
-                <span>Brand</span>
-                <span className="icon icon-arrow-up" />
-              </div>
-              <div id="brand" className="collapse show">
-                <ul className="tf-filter-group current-scrollbar mb_36">
-                  {brands.map((brand) => (
-                    <li
-                      key={brand}
-                      className="list-item d-flex gap-12 align-items-center"
-                      onClick={() => handleSelectBrand(brand)}
-                    >
-                      <input
-                        type="radio"
-                        className="tf-check"
-                        readOnly
-                        checked={selectedBrands.includes(brand)}
-                      />
-                      <label className="label">
-                        <span>{brand}</span>&nbsp;
-                        <span>
-                          ({products.filter((elm) => elm.brand == brand).length}
-                          )
-                        </span>
-                      </label>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="widget-facet">
-              <div
-                className="facet-title"
-                data-bs-target="#color"
-                data-bs-toggle="collapse"
-                aria-expanded="true"
-                aria-controls="color"
-              >
-                <span>Color</span>
-                <span className="icon icon-arrow-up" />
-              </div>
-              <div id="color" className="collapse show">
-                <ul className="tf-filter-group filter-color current-scrollbar mb_36">
-                  {filterColors.map((elm, i) => (
-                    <li
-                      key={i}
-                      className="list-item d-flex gap-12 align-items-center"
-                      onClick={() => handleSelectColor(elm.name)}
-                    >
+                  {(bikeModels[selectedBrands[0]] || []).map((model) => (
+                    <li key={model} onClick={() => handleSelectModel(model)}>
                       <input
                         type="checkbox"
-                        name="color"
-                        className={`tf-check-color ${elm.colorClass}`}
+                        checked={selectedModels.includes(model)}
                         readOnly
-                        checked={selectedColors.includes(elm.name)}
                       />
-                      <label className="label">
-                        <span>{elm.name}</span>&nbsp;
-                        <span>
-                          (
-                          {
-                            products.filter((el) =>
-                              el.colors
-                                ?.map((col) => col?.name)
-                                ?.includes(elm.name)
-                            ).length
-                          }
-                          )
-                        </span>
-                      </label>
+                      <label>{model}</label>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
+            )}
+
             <div className="widget-facet">
-              <div
-                className="facet-title"
-                data-bs-target="#size"
-                data-bs-toggle="collapse"
-                aria-expanded="true"
-                aria-controls="size"
-              >
-                <span>Size</span>
-                <span className="icon icon-arrow-up" />
-              </div>
-              <div id="size" className="collapse show">
-                <ul className="tf-filter-group current-scrollbar">
-                  {sizes.map((elm, i) => (
-                    <li
-                      key={i}
-                      onClick={() => handleSelectSizes(elm)}
-                      className="list-item d-flex gap-12 align-items-center"
-                    >
-                      <input
-                        type="radio"
-                        className="tf-check tf-check-size"
-                        readOnly
-                        checked={selectedSizes.includes(elm)}
-                      />
-                      <label className="label">
-                        <span>{elm}</span>&nbsp;
-                        <span>
-                          (
-                          {
-                            products.filter((el) => el.sizes?.includes(elm))
-                              .length
-                          }
-                          )
-                        </span>
-                      </label>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <h6 className="facet-title">Availability</h6>
+              <ul className="tf-filter-group current-scrollbar mb_36">
+                <li onClick={() => handleSelectAvailability(true)}>
+                  <input
+                    type="checkbox"
+                    checked={selectedAvailability.includes(true)}
+                    readOnly
+                  />
+                  <label>Available</label>
+                </li>
+                <li onClick={() => handleSelectAvailability(false)}>
+                  <input
+                    type="checkbox"
+                    checked={selectedAvailability.includes(false)}
+                    readOnly
+                  />
+                  <label>Out of Stock</label>
+                </li>
+              </ul>
             </div>
+
+            <button
+              type="button"
+              className="tf-btn style-2 btn-fill rounded mt-3"
+              onClick={clearFilter}
+            >
+              Clear Filter
+            </button>
           </form>
-          <div className="mt-5"></div>
-          <a
-            className="tf-btn style-2 btn-fill rounded animate-hover-btn"
-            onClick={clearFilter}
-          >
-            Clear Filter
-          </a>
         </div>
       </div>
     </div>

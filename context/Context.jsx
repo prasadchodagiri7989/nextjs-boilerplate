@@ -41,6 +41,8 @@ export default function Context({ children }) {
   ];
 
   const [cartProducts, setCartProducts] = useState([]);
+const [buyNowProduct, setBuyNowProduct] = useState(null);
+
   const [wishList, setWishList] = useState([]);
   const [compareItem, setCompareItem] = useState([]);
 

@@ -2,11 +2,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/AuthContext"; // <-- import your context
 
 export default function Login() {
   const router = useRouter();
-  const { login } = useAuth(); // ⬅️ use login from context
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,31 +13,35 @@ export default function Login() {
   const [success, setSuccess] = useState("");
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data?.error || "Invalid email or password");
-      }
-
-      // ✅ Save to AuthContext and localStorage
-      login(data.user, data.token);
-
-      // ✅ Navigate to home or dashboard
-      router.push("/");
-    } catch (err) {
-      setError(err.message || "Something went wrong.");
+    if (!res.ok) {
+      throw new Error(data?.error || "Invalid email or password");
     }
-  };
+
+    // ✅ Store token in cookies (expires in 7 days)
+    document.cookie = `token=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}`;
+
+    // Optionally: store user info in localStorage
+    localStorage.setItem("user", JSON.stringify(data.user));
+
+    // ✅ Navigate to home or dashboard
+    router.push("/");
+  } catch (err) {
+    setError(err.message || "Something went wrong.");
+  }
+};
+
 
   const handleRecover = (e) => {
     e.preventDefault();

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState,useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 import CountdownComponent from "../common/Countdown";
@@ -27,6 +28,20 @@ export default function DetailsOuterZoom({ product }) {
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizeOptions[1]);
   const [quantity, setQuantity] = useState(1);
+
+  const { setBuyNowProduct } = useContextElement();
+
+  const handleBuyNow = () => {
+    const selectedProduct = {
+      _id: productId,
+      name: productName,
+      price: productPrice,
+      images: product.images,
+      quantity,
+    };
+    setBuyNowProduct(selectedProduct);
+    router.push("/checkout");
+  };
 
   const handleColor = (color) => {
     const updatedColor = colors.filter(
@@ -167,7 +182,7 @@ const handleRazorpayPayment = async () => {
                     </div>
 
                     <div className="compare-at-price">
-                      ${currentColor.oldPrice.toFixed(2)}
+                      Rs.{currentColor.oldPrice.toFixed(2)}
                     </div>
 
                     <div className="badges-on-sale">
@@ -200,72 +215,30 @@ const handleRazorpayPayment = async () => {
                       <a
                         onClick={() => {
                           openCartModal();
-                          addProductToCart(productId, quantity ? quantity : 1);
+                          addProductToCart(productId, quantity || 1);
                         }}
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn"
                       >
                         <span>
-                          {isAddedToCartProducts(product.id)
-                            ? "Already Added"
-                            : "Add to cart"}{" "}
-                          -{" "}
+                          {isAddedToCartProducts(product.id) ? "Already Added" : "Add to cart"} -{" "}
                         </span>
                         <span className="tf-qty-price">
-                          ${(product.price * quantity).toFixed(2)}
+                          Rs.{(product.price * quantity).toFixed(2)}
                         </span>
                       </a>
-                      <a
-                        onClick={() => addToWishlist(product.id)}
-                        className="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action"
-                      >
-                        <span
-                          className={`icon icon-heart ${
-                            isAddedtoWishlist(product.id) ? "added" : ""
-                          }`}
-                        />
-                        <span className="tooltip">
-                          {" "}
-                          {isAddedtoWishlist(product.id)
-                            ? "Already Wishlisted"
-                            : "Add to Wishlist"}
-                        </span>
-                        <span className="icon icon-delete" />
-                      </a>
-                      <a
-                        href="#compare"
-                        data-bs-toggle="offcanvas"
-                        onClick={() => addToCompareItem(product.id)}
-                        aria-controls="offcanvasLeft"
-                        className="tf-product-btn-wishlist hover-tooltip box-icon bg_white compare btn-icon-action"
-                      >
-                        <span
-                          className={`icon icon-compare ${
-                            isAddedtoCompareItem(product.id) ? "added" : ""
-                          }`}
-                        />
-                        <span className="tooltip">
-                          {isAddedtoCompareItem(product.id)
-                            ? "Already Compared"
-                            : "Add to Compare"}
-                        </span>
-                        <span className="icon icon-check" />
-                      </a>
+
                       <div className="w-100">
-                        <a onClick={handleRazorpayPayment} className="btns-full" style={{ cursor: 'pointer' }}>
-                          Buy with
-                          <Image
-                            alt="image"
-                            src="/images/sample/phnpe.png"
-                            width={64}
-                            height={18}
-                          />
-                        </a>
-                        <a href="#" className="payment-more-option">
-                          More payment options
+                        <a
+                          onClick={handleBuyNow}
+                          className="btns-full"
+                          style={{ cursor: "pointer" }}
+                        >
+                          Buy Now
                         </a>
                       </div>
                     </form>
                   </div>
+
                   <div className="tf-product-info-extra-link">
                     <a
                       href="#ask_question"
