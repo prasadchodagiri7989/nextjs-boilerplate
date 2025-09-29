@@ -88,18 +88,18 @@ export default function Footer1({ bgColor = "" }) {
                   <ul>
                     <li>
                       <p>
-                        Address: Lorem ipsum dolor sit amet <br />
-                        Lorem ipsum dolor sit amet
+                        Address: 123 Bike Lane, Cityville, Country <br />
+                        Open: Mon-Sat, 9am - 8pm
                       </p>
                     </li>
                     <li>
                       <p>
-                        Email: <a href="#">Lorem@ipsum.com</a>
+                        Email: <a href="mailto:support@bikershub.com">support@bikershub.com</a>
                       </p>
                     </li>
                     <li>
                       <p>
-                        Phone: <a href="#">(212) 555-1234</a>
+                        Phone: <a href="tel:+1234567890">+1 (234) 567-890</a>
                       </p>
                     </li>
                   </ul>
@@ -195,7 +195,7 @@ export default function Footer1({ bgColor = "" }) {
                   </div>
                   <div className="tf-collapse-content">
                     <div className="footer-menu_item">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet elit non orci posuere
+                      Sign up for our newsletter to get the latest biking news, tips, and exclusive offers from BikersHub!
                     </div>
                     <div
                       className={`tfSubscribeMsg ${
@@ -204,10 +204,10 @@ export default function Footer1({ bgColor = "" }) {
                     >
                       {success ? (
                         <p style={{ color: "rgb(52, 168, 83)" }}>
-                          Lorem ipsum dolor sit amet
+                          Thank you for subscribing!
                         </p>
                       ) : (
-                        <p style={{ color: "red" }}>Lorem ipsum dolor sit amet</p>
+                        <p style={{ color: "red" }}>Subscription failed. Please try again.</p>
                       )}
                     </div>
                     <form

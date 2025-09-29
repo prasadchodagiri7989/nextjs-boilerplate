@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+const Preloader = dynamic(() => import("@/components/common/Preloader"), { ssr: false });
 import { AuthProvider } from "@/context/AuthContext";
 
 
@@ -31,6 +33,13 @@ import { usePathname } from "next/navigation";
 import ShareModal from "@/components/modals/ShareModal";
 import ScrollTop from "@/components/common/ScrollTop";
 export default function RootLayout({ children }) {
+  const [showPreloader, setShowPreloader] = useState(true);
+  useEffect(() => {
+    // Only show preloader on first load or reload
+    setShowPreloader(true);
+    const timer = setTimeout(() => setShowPreloader(false), 5000);
+    return () => clearTimeout(timer);
+  }, []);
   const pathname = usePathname();
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -109,79 +118,39 @@ export default function RootLayout({ children }) {
     });
   }, [pathname]); // Runs every time the route changes
 
-  useEffect(() => {
-    const header = document.querySelector("header");
-    if (header) {
-      if (scrollDirection == "up") {
-        header.style.top = "0px";
-      } else {
-        header.style.top = "-185px";
-      }
-    }
-  }, [scrollDirection]);
-  useEffect(() => {
-    const WOW = require("@/utlis/wow");
-    const wow = new WOW.default({
-      mobile: false,
-      live: false,
-    });
-    wow.init();
-  }, [pathname]);
-
-  useEffect(() => {
-    const initializeDirection = () => {
-      const direction = localStorage.getItem("direction");
-
-      if (direction) {
-        const parsedDirection = JSON.parse(direction);
-        document.documentElement.dir = parsedDirection.dir;
-        document.body.classList.add(parsedDirection.dir);
-      } else {
-        document.documentElement.dir = "ltr";
-      }
-
-      const preloader = document.getElementById("preloader");
-      if (preloader) {
-        preloader.classList.add("disabled");
-      }
-    };
-
-    initializeDirection();
-  }, []); // Only runs once on component mount
-
+  // Only one return block with preloader logic
   return (
-    <AuthProvider>
     <html lang="en">
-      <body className="preload-wrapper">
-        <div className="preload preload-container" id="preloader">
-          <div className="preload-logo">
-            <div className="spinner"></div>
-          </div>
-        </div>{" "}
-        <Context>
-          <div id="wrapper">{children}</div>
-          <HomesModal /> <QuickView />
-          <QuickAdd />
-          <ProductSidebar />
-          <Compare />
-          <ShopCart />
-          <AskQuestion />
-          <BlogSidebar />
-          <ColorCompare />
-          <DeliveryReturn />
-          <FindSize />
-          <Login />
-          <MobileMenu />
-          <Register />
-          <ResetPass />
-          <SearchModal />
-          <ToolbarBottom />
-          <ToolbarShop />
-          <ShareModal />{" "}
-        </Context>
-        <ScrollTop />
+      <body>
+        {showPreloader && <Preloader />}
+        {!showPreloader && (
+          <AuthProvider>
+            <Context>
+              {children}
+              <ScrollTop />
+              <HomesModal />
+              <QuickView />
+              <ProductSidebar />
+              <QuickAdd />
+              <Compare />
+              <ShopCart />
+              <AskQuestion />
+              <BlogSidebar />
+              <ColorCompare />
+              <DeliveryReturn />
+              <FindSize />
+              <Login />
+              <MobileMenu />
+              <Register />
+              <ResetPass />
+              <SearchModal />
+              <ToolbarBottom />
+              <ToolbarShop />
+              <ShareModal />
+            </Context>
+          </AuthProvider>
+        )}
       </body>
     </html>
-    </AuthProvider>
   );
 }

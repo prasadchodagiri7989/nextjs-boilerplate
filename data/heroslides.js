@@ -1,21 +1,21 @@
 export const slides = [
   {
     imgSrc: "/images/slider/fashion-slideshow-01.jpg",
-    title: "Lorem ipsum",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    title: "Welcome to BikersHub",
+    text: "Your one-stop shop for premium biking gear, accessories, and apparel.",
     btnText: "Shop Now",
   },
   {
     imgSrc: "/images/slider/fashion-slideshow-02.jpg",
-    title: "Simple\nStyle",
-    text: "From casual to formal, we've got you covered",
-    btnText: "Shop collection",
+    title: "Ride in Style",
+    text: "Explore the latest collections for every rider and every journey.",
+    btnText: "Shop Collection",
   },
   {
     imgSrc: "/images/slider/fashion-slideshow-03.jpg",
-    title: "Glamorous\nGlam",
-    text: "From casual to formal, we've got you covered",
-    btnText: "Shop collection",
+    title: "Gear Up & Go",
+    text: "Top-rated products and exclusive deals for passionate bikers.",
+    btnText: "Discover More",
   },
 ];
 

@@ -60,7 +60,7 @@ export default function Topbar1() {
             >
               <SwiperSlide className="swiper-slide">
                 <p className="top-bar-text fw-5">
-                Lorem ipsum dolor sit amet.{" "}
+                  Free shipping on orders over $99! {" "}
                   <Link
                     href={`/shop-default`}
                     title="all collection"
@@ -73,12 +73,12 @@ export default function Topbar1() {
               </SwiperSlide>
               <SwiperSlide className="swiper-slide">
                 <p className="top-bar-text fw-5">
-                Lorem ipsum dolor sit amet.
+                  New arrivals: Explore the latest in biking apparel and accessories.
                 </p>
               </SwiperSlide>
               <SwiperSlide className="swiper-slide">
                 <p className="top-bar-text fw-5">
-                Lorem ipsum dolor sit amet.
+                  Join our community for exclusive deals and updates!
                 </p>
               </SwiperSlide>
             </Swiper>

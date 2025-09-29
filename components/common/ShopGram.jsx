@@ -15,7 +15,7 @@ export default function ShopGram() {
         <div className="flat-title wow fadeInUp" data-wow-delay="0s">
           <span className="title">Top Sales</span>
           <p className="sub-title">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus euismod justo nec risus dictum
+            Discover our best-selling biking gear and accessories, handpicked for passionate riders. Shop the top trends and essentials at BikersHub!
           </p>
         </div>
         <div className="wrap-carousel wrap-shop-gram">
