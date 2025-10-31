@@ -7,6 +7,7 @@ import ShopFilter from "./ShopFilter";
 import Sorting from "./Sorting";
 
 export default function ShopCollections({ collectionId }) {
+
   const [gridItems, setGridItems] = useState(4);
   const [products, setProducts] = useState([]); // Stores fetched products
   const [filteredProducts, setFilteredProducts] = useState([]); // Stores filtered products
@@ -68,22 +69,6 @@ export default function ShopCollections({ collectionId }) {
               </a>
             </div>
 
-            {/* Grid Layout Toggle */}
-            <ul className="tf-control-layout d-flex justify-content-center">
-              {layouts.map((layout, index) => (
-                <li
-                  key={index}
-                  className={`tf-view-layout-switch ${layout.className} ${
-                    gridItems === layout.dataValueGrid ? "active" : ""
-                  }`}
-                  onClick={() => setGridItems(layout.dataValueGrid)}
-                >
-                  <div className="item">
-                    <span className={`icon ${layout.iconClass}`} />
-                  </div>
-                </li>
-              ))}
-            </ul>
 
             {/* Sorting Dropdown */}
             <div className="tf-control-sorting d-flex justify-content-end">
