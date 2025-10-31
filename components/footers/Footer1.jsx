@@ -68,7 +68,11 @@ export default function Footer1({ bgColor = "" }) {
   };
 
   return (
-    <footer id="footer" className={`footer md-pb-70 ${bgColor}`}>
+    <footer
+  id="footer"
+  className="footer md-pb-70"
+  style={{ backgroundColor:"#f2f2f2" }}
+>
       <div className="footer-wrap">
         <div className="footer-body">
           <div className="container">
@@ -130,22 +134,6 @@ export default function Footer1({ bgColor = "" }) {
                         className="box-icon w_34 round social-instagram social-line"
                       >
                         <i className="icon fs-14 icon-instagram" />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="box-icon w_34 round social-tiktok social-line"
-                      >
-                        <i className="icon fs-14 icon-tiktok" />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="box-icon w_34 round social-pinterest social-line"
-                      >
-                        <i className="icon fs-14 icon-pinterest-1" />
                       </a>
                     </li>
                   </ul>

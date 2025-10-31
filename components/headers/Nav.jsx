@@ -182,7 +182,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
       </a>
 
       <div className="sub-menu links-default">
-        <ul className="menu-list" style={{ marginBottom: "20px" }}>
+        <ul className="menu-list" style={{ marginBottom: "20px", fontWeight: "bold" }}>
           <li>
             <select
               className="tf-select"
@@ -238,7 +238,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
           } `}
           style={{ color: "var(--white)" }}
         >
-          Motorcycles Accessories
+          Motorcycles
           {isArrow ? <i className="icon icon-arrow-down" /> : ""}
         </a>
         <div className="sub-menu mega-menu">
@@ -255,7 +255,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                             href={link.href}
                             className={`menu-link-text link ${
                               isMenuActive(link) ? "" : ""
-                            }`}
+                            }`}   style={{ fontWeight: "bold" }}
                           >
                             {link.text}
                           </Link>
@@ -293,6 +293,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                           <Link
                             href={linkItem.href}
                             className={`menu-link-text link position-relative  `}
+                              style={{ fontWeight:"bold"}}
                           >
                             {linkItem.text}
                             {linkItem.extra}
@@ -368,7 +369,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                     className={`${item.className}  ${
                       isMenuActive(item) ? "" : ""
                     }`}
-                    style={{ position: "relative" }}
+                    style={{ position: "relative", fontWeight: "bold"}}
                   >
                     {item.text}{" "}
                     {item.label && (
@@ -389,6 +390,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                             className={`${subItem.className} ${
                               isMenuActive(subItem) ? "" : ""
                             }`}
+                              style={{ fontWeight:"bold"}}
                           >
                             {subItem.text}
                             {subItem.label && (
@@ -429,6 +431,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                   className={`menu-link-text link text_black-2  ${
                     isMenuActive(linkItem) ? "" : ""
                   }`}
+                    style={{ fontWeight:"bold"}}
                 >
                   {linkItem.text}
                 </Link>

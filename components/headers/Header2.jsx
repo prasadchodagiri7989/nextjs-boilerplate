@@ -91,16 +91,6 @@ export default function Header2({
                   </Link>
                 )}
               </li>
-
-              <li className="nav-wishlist">
-                <Link href={`/wishlist`} className="nav-icon-item" style={{ color: "var(--white)" }}>
-                  <i className="icon icon-heart" />
-                  <span className={`count-box ${bgColor} ${textClass}`}>
-                    <WishlistLength />
-                  </span>
-                </Link>
-              </li>
-
               <li className="nav-cart">
                 <a
                   style={{ color: "var(--white)" }}

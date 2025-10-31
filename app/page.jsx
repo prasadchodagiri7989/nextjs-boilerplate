@@ -23,8 +23,6 @@ export default function Home() {
       <Hero />
       <Categories />
       <Products />
-      <Testimonials />
-      <Brands />
       <ShopGram />
       <Features />
       <Footer1 />

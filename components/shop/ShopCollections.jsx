@@ -87,7 +87,7 @@ export default function ShopCollections({ collectionId }) {
 
             {/* Sorting Dropdown */}
             <div className="tf-control-sorting d-flex justify-content-end">
-              <div className="tf-dropdown-sort" data-bs-toggle="dropdown" style={{display: 'none'}}>
+              <div className="tf-dropdown-sort" data-bs-toggle="dropdown" style={{display: 'none',}}>
                 <Sorting setFinalSorted={setFinalSorted} products={filteredProducts} />
               </div>
             </div> 

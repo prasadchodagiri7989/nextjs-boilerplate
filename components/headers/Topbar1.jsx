@@ -32,19 +32,6 @@ export default function Topbar1() {
                 <i className="icon fs-12 icon-instagram" />
               </a>
             </li>
-            <li>
-              <a href="#" className="box-icon w_28 round social-tiktok bg_line">
-                <i className="icon fs-12 icon-tiktok" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="box-icon w_28 round social-pinterest bg_line"
-              >
-                <i className="icon fs-12 icon-pinterest-1" />
-              </a>
-            </li>
           </ul>
           <div className="text-center overflow-hidden">
             <Swiper
